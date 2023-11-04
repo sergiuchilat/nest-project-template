@@ -19,7 +19,6 @@ import { CountryService } from './country.service';
 import { RegionService } from '../region/region.service';
 import { LocationService } from '../location/location.service';
 import {
-  ApiBearerAuth,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -28,13 +27,13 @@ import {
 } from '@nestjs/swagger';
 import { CountryCreateDto } from './dto/country.create.payload.dto';
 import { CountryItemDto } from './dto/country.item.dto';
-import { LocationItemDto } from '../location/dto/location.item.dto';
-import { RegionItemDto } from '../region/dto/region.item.dto';
-import { RolesGuard } from '../../user/roles/roles.decorator';
-import { UserRole } from '../../user/roles/role.enum';
-import { SortOrder } from '../../../validators/typeorm.sort.validator';
+import { LocationItemDto } from '@/app/modules/geo/location/dto/location.item.dto';
+import { RegionItemDto } from '@/app/modules/geo/region/dto/region.item.dto';
+import { RolesGuard } from '@/app/modules/user/roles/roles.decorator';
+import { UserRole } from '@/app/modules/user/roles/role.enum';
+import { SortOrder } from '@/app/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
-import { TimeoutInterceptor } from '../../../interceptors/timeout.interceptor';
+import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.interceptor';
 
 @ApiTags('Countries')
 @Controller('/countries')
@@ -91,7 +90,7 @@ export class CountryController {
     type: CountryItemDto,
     isArray: true,
   })
-  @UseInterceptors(TimeoutInterceptor)
+  @UseInterceptors(RequestTimeoutInterceptor)
   async getAllPaginated(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe)
     page: number,
@@ -161,7 +160,7 @@ export class CountryController {
     type: CountryItemDto,
     isArray: true,
   })
-  @UseInterceptors(TimeoutInterceptor)
+  @UseInterceptors(RequestTimeoutInterceptor)
   async getAllWithDeleted(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe)
     page: number,

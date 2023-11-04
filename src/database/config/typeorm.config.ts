@@ -1,10 +1,7 @@
 import {registerAs} from '@nestjs/config';
-import AppConfig from '../../config/app-config/app-config';
+import AppConfig from '@/config/app-config';
 
 import { DataSource, DataSourceOptions } from 'typeorm';
-
-
-
 
 const config = {
   type: AppConfig.db.driver,
@@ -16,7 +13,7 @@ const config = {
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/database/migrations/*.js'],
   autoLoadEntities: true,
-  syncronize: false,
+  synchronize: false,
 }
 
 export default registerAs('typeorm', () => config);

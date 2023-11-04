@@ -1,6 +1,5 @@
 import AppConfigInterface from "../interfaces/app-config.interface";
 import { DbDriver } from "../interfaces/components/db-config.interface";
-const isValidHostname = require('is-valid-hostname')
 
 export default class DbConfigValidator {
 
@@ -17,6 +16,8 @@ export default class DbConfigValidator {
     }
 
     private static validateHost(host: string) {
+        const isValidHostname = require('is-valid-hostname')
+
         if (!isValidHostname(host)) {
             throw new Error('Invalid db host')
         }

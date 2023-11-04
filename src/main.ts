@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 
-import { AppModule } from './app/app.module';
-import buildApiDocs from './docs/swagger.builder';
+import { AppModule } from '@/app/app.module';
+import buildApiDocs from '@/docs/swagger.builder';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
-import AppConfig from './config/app-config/app-config';
+import AppConfig from '@/config/app-config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

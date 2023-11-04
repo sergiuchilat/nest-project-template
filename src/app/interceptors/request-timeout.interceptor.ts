@@ -1,4 +1,3 @@
-import appConfig from '@/config/app-config/app-config';
 import {
   CallHandler,
   ExecutionContext,
@@ -13,14 +12,13 @@ import {
   timeout,
   TimeoutError,
 } from 'rxjs';
-
+import AppConfig from "@/config/app-config";
 
 @Injectable()
-export class TimeoutInterceptor implements NestInterceptor {
+export class RequestTimeoutInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
-      // timeout(appConfig.getInstance().getConfig().app.requestTimeout),
-      timeout(30000),
+      timeout(AppConfig.app.requestTimeout),
       catchError((err) => {
         if (err instanceof TimeoutError) {
           return throwError(() => new RequestTimeoutException());

@@ -1,5 +1,4 @@
 import AppConfigInterface from "../interfaces/app-config.interface";
-const isValidHostname = require('is-valid-hostname')
 
 export default class AppConfigValidator {
 

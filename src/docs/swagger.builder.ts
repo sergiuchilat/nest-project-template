@@ -1,4 +1,4 @@
-import ConfigInterface from '@/config/app-config/interfaces/app-config.interface';
+import ConfigInterface from '@/config/interfaces/app-config.interface';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const buildApiDocs = (app, ConfigEnv: ConfigInterface['docs']) => {

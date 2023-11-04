@@ -1,6 +1,7 @@
-import { title } from "process";
 import AppConfigInterface from "../interfaces/app-config.interface";
 import { DbDriver } from "../interfaces/components/db-config.interface";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export default class EnvConfigStrategy {
     private readonly config: AppConfigInterface = null

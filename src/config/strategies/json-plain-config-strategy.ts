@@ -1,9 +1,7 @@
 
 import AppConfigInterface from "../interfaces/app-config.interface";
 import { DbDriver } from "../interfaces/components/db-config.interface";
-import jsonPlainConfig from '../../app-config.json'
-
-
+import jsonPlainConfig from '@/../app-config.json'
 export default class JsonPlainConfigStrategy {
     private readonly config: AppConfigInterface = null
     

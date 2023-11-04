@@ -2,10 +2,8 @@ import AppConfigInterface from "./interfaces/app-config.interface";
 import EnvConfigStrategy from "./strategies/env-config-strategy";
 import AppConfigValidator from "./validators/app-config.validator";
 import DbConfigValidator from "./validators/db-config.validator";
-import * as dotenv from 'dotenv';
 import DocsConfigValidator from "./validators/docs-config.validator";
 import JsonPlainConfigStrategy from "./strategies/json-plain-config-strategy";
-dotenv.config();
 
 export enum AppConfigStrategies {
     env = 'env',
@@ -47,11 +45,11 @@ class AppConfigSingleton {
         }
     };
 
+    private constructor() {}
+
     public static getInstance(): AppConfigSingleton {
         return this.instance || (this.instance = new this());
     }
-
-    private constructor() { }
 
     private validateConfig() {
         DbConfigValidator.validate(this.config.db)

@@ -1,5 +1,4 @@
 import AppConfigInterface from "../interfaces/app-config.interface";
-const semver = require('semver')
 
 export default class DocsConfigValidator {
 
@@ -17,6 +16,8 @@ export default class DocsConfigValidator {
     }
 
     private static validateVersion(version: string) {
+        const semver = require('semver')
+
         if (!(version && semver.valid(version))) {
             throw new Error('Invalid docs version. See https://semver.org/')
         }
