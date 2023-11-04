@@ -5,7 +5,7 @@ import { UserModule } from '../user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
-import appConfig from '@/config/app-config';
+import AppConfig from '@/config/app-config/app-config';
 
 
 @Module({
@@ -13,9 +13,9 @@ import appConfig from '@/config/app-config';
     UserModule,
     PassportModule,
     JwtModule.register({
-      secret: "1234",//appConfig.getInstance().getConfig().jwt.secret,
+      secret: AppConfig.jwt.secret,
       signOptions: {
-        expiresIn: 60 * Number(60 * 60 *24),//appConfig.getInstance().getConfig().jwt.expiresIn),
+        expiresIn: 60 * Number(AppConfig.jwt.expiresIn),
       },
     }),
   ],

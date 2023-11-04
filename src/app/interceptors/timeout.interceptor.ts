@@ -1,4 +1,4 @@
-import appConfig from '@/config/app-config';
+import appConfig from '@/config/app-config/app-config';
 import {
   CallHandler,
   ExecutionContext,

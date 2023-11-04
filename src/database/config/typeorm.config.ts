@@ -1,19 +1,18 @@
 import {registerAs} from '@nestjs/config';
-import appConfig, { AppConfigStrategies } from '../../config/app-config/index';
+import AppConfig from '../../config/app-config/app-config';
 
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-appConfig.getInstance().init(AppConfigStrategies.env);
 
-const appConfigInstance = appConfig.getInstance().getConfig()
+
 
 const config = {
-  type: appConfigInstance.db.driver,
-  host: appConfigInstance.db.host,
-  port: appConfigInstance.db.port,
-  username: appConfigInstance.db.user,
-  password: appConfigInstance.db.password,
-  database: appConfigInstance.db.name,
+  type: AppConfig.db.driver,
+  host: AppConfig.db.host,
+  port: AppConfig.db.port,
+  username: AppConfig.db.user,
+  password: AppConfig.db.password,
+  database: AppConfig.db.name,
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/database/migrations/*.js'],
   autoLoadEntities: true,

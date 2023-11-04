@@ -21,6 +21,6 @@
         "version": "1.0.0",
         "title": "Sample project API documentation",
         "description": "Sample project API documentation description",
-        "authName": "Berer token"
+        "authName": "Bearer token"
     }
 }

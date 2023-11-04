@@ -12,8 +12,8 @@ export enum AppConfigStrategies {
     json = 'json'
 }
 
-class AppConfig {
-    private static instance: AppConfig = null;
+class AppConfigSingleton {
+    private static instance: AppConfigSingleton = null;
 
     private configStrategies = {
         'env': new EnvConfigStrategy(),
@@ -47,7 +47,7 @@ class AppConfig {
         }
     };
 
-    public static getInstance(): AppConfig {
+    public static getInstance(): AppConfigSingleton {
         return this.instance || (this.instance = new this());
     }
 
@@ -69,4 +69,6 @@ class AppConfig {
     }
 }
 
+AppConfigSingleton.getInstance().init(AppConfigStrategies.env);
+const AppConfig = AppConfigSingleton.getInstance().getConfig()
 export default AppConfig
