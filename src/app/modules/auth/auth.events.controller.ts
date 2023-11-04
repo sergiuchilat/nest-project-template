@@ -3,7 +3,7 @@ import { ApiTags } from "@nestjs/swagger";
 import { OnEvent } from "@nestjs/event-emitter";
 import { AuthEvent } from "@/app/modules/auth/enum/auth.events.enum";
 import { UserLoginPayloadDto } from "@/app/modules/auth/dto/user-login.payload.dto";
-import { EventsGateway } from "@/app/modules/auth/events/events.gateway";
+import { EventsGateway } from "@/app/modules/events-gateway/events.gateway";
 import { UserPingPayloadDto } from "@/app/modules/auth/dto/user-ping.payload.dto";
 
 @ApiTags("Auth Events Controller")

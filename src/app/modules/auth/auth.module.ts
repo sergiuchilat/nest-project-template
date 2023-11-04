@@ -6,7 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
 import AppConfig from '@/config/app-config';
-import { EventsGateway } from "@/app/modules/auth/events/events.gateway";
+import { EventsGateway } from "@/app/modules/events-gateway/events.gateway";
 import { AuthEventsController } from "@/app/modules/auth/auth.events.controller";
 
 @Module({
@@ -16,7 +16,7 @@ import { AuthEventsController } from "@/app/modules/auth/auth.events.controller"
     JwtModule.register({
       secret: AppConfig.jwt.secret,
       signOptions: {
-        expiresIn: 60 * Number(AppConfig.jwt.expiresIn),
+        expiresIn: Number(AppConfig.jwt.expiresIn),
       },
     }),
   ],
