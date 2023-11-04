@@ -6,8 +6,8 @@ import { ValidationPipe, VersioningType } from '@nestjs/common';
 import appConfig, { AppConfigStrategies } from './config/app-config/index';
 
 async function bootstrap() {
-  appConfig.init(AppConfigStrategies.env);
-  const appConfigInstance = appConfig.getConfig()
+  appConfig.getInstance().init(AppConfigStrategies.env);
+  const appConfigInstance = appConfig.getInstance().getConfig()
   const app = await NestFactory.create(AppModule);
   
   if (appConfigInstance.docs.generate) {

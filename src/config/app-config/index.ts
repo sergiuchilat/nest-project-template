@@ -69,4 +69,4 @@ class AppConfig {
     }
 }
 
-export default AppConfig.getInstance();
+export default AppConfig

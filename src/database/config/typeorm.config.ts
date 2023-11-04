@@ -3,9 +3,9 @@ import appConfig, { AppConfigStrategies } from '../../config/app-config/index';
 
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-appConfig.init(AppConfigStrategies.env);
+appConfig.getInstance().init(AppConfigStrategies.env);
 
-const appConfigInstance = appConfig.getConfig()
+const appConfigInstance = appConfig.getInstance().getConfig()
 
 const config = {
   type: appConfigInstance.db.driver,

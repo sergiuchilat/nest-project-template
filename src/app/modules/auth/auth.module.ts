@@ -5,16 +5,17 @@ import { UserModule } from '../user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
-import ConfigEnv from '../../../config/config.env';
+import appConfig from '@/config/app-config';
+
 
 @Module({
   imports: [
     UserModule,
     PassportModule,
     JwtModule.register({
-      secret: ConfigEnv.JWT_SECRET_KEY,
+      secret: "1234",//appConfig.getInstance().getConfig().jwt.secret,
       signOptions: {
-        expiresIn: 60 * Number(ConfigEnv.JWT_TOKEN_EXPIRES_IN),
+        expiresIn: 60 * Number(60 * 60 *24),//appConfig.getInstance().getConfig().jwt.expiresIn),
       },
     }),
   ],
