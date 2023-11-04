@@ -7,8 +7,8 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { UserRegisterDto } from '../auth/dto/user.register.dto';
-import { UserRegisterResponseDto } from '../auth/dto/user.register.response.dto';
+import { UserRegisterPayloadDto } from '../auth/dto/user-register.payload.dto';
+import { UserRegisterResponseDto } from '../auth/dto/user-register.response.dto';
 import { compare, hash } from 'bcrypt';
 import { UserRole } from './roles/role.enum';
 import { plainToInstance } from 'class-transformer';
@@ -46,16 +46,16 @@ export class UserService {
     });
   }
 
-  async createUser(user: UserRegisterDto): Promise<UserRegisterResponseDto> {
+  async createUser(user: UserRegisterPayloadDto): Promise<UserRegisterResponseDto> {
     return await this.create(user, 'user');
   }
 
-  async createAdmin(user: UserRegisterDto): Promise<UserRegisterResponseDto> {
+  async createAdmin(user: UserRegisterPayloadDto): Promise<UserRegisterResponseDto> {
     return await this.create(user, 'admin');
   }
 
   private async create(
-    user: UserRegisterDto,
+    user: UserRegisterPayloadDto,
     role: string,
   ): Promise<UserRegisterResponseDto> {
     const existingUser = await this.userRepository.findOne({

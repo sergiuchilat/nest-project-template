@@ -12,7 +12,6 @@ import {
   Delete,
 } from '@nestjs/common';
 import {
-  ApiBearerAuth,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -20,7 +19,7 @@ import {
 } from '@nestjs/swagger';
 
 import { AdminRegisterDto } from './dto/admin.register.dto';
-import { UserRegisterResponseDto } from '../auth/dto/user.register.response.dto';
+import { UserRegisterResponseDto } from '../auth/dto/user-register.response.dto';
 import { UserService } from './user.service';
 import { RolesGuard } from './roles/roles.decorator';
 import { UserRole } from './roles/role.enum';

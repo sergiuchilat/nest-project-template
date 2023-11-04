@@ -1,10 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
-import { UserLoginResponseDto } from './dto/user.login.response.dto';
-import { UserLoginDto } from './dto/user.login.dto';
-import { UserRegisterDto } from './dto/user.register.dto';
-import { UserRegisterResponseDto } from './dto/user.register.response.dto';
+import { UserLoginResponseDto } from './dto/user-login.response.dto';
+import { UserLoginPayloadDto } from './dto/user-login.payload.dto';
+import { UserRegisterPayloadDto } from './dto/user-register.payload.dto';
+import { UserRegisterResponseDto } from './dto/user-register.response.dto';
 import { compare } from 'bcrypt';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(user: UserLoginDto): Promise<UserLoginResponseDto> {
+  async login(user: UserLoginPayloadDto): Promise<UserLoginResponseDto> {
     let validCredentials = false;
     let existingUser = null;
     try {
@@ -44,7 +44,7 @@ export class AuthService {
     throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
   }
 
-  async registerUser(user: UserRegisterDto): Promise<UserRegisterResponseDto> {
+  async registerUser(user: UserRegisterPayloadDto): Promise<UserRegisterResponseDto> {
     return await this.userService.createUser(user);
   }
 
