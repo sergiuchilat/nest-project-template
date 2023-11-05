@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user/modules/user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserLoginResponseDto } from './dto/user-login.response.dto';
 import { UserLoginPayloadDto } from './dto/user-login.payload.dto';

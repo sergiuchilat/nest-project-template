@@ -1,20 +1,14 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import AppModules from './modules';
-import { ConfigModule } from '@nestjs/config';
 import typeormConnector from '@/database/connectors/typeorm.connector';
-import typeorm from '@/database/config/typeorm.config';
+import EventEmitterConfig from "@/app/services/events-gateway/event-emitter.config";
 import middlewares from './middleware';
-import {EventEmitterModule} from "@nestjs/event-emitter";
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [typeorm]
-    }),
-    typeormConnector,
-    ...AppModules,
-      EventEmitterModule.forRoot()
+      ...typeormConnector,
+      ...AppModules,
+      EventEmitterConfig
   ],
 })
 export class AppModule implements NestModule {

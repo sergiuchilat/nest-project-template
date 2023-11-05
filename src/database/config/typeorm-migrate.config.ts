@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config';
-import AppConfig from "@/config/app-config"
 import { DataSource, DataSourceOptions } from 'typeorm';
+import AppConfig from "@/config/app-config";
 
 const config = {
   type: AppConfig.db.driver,

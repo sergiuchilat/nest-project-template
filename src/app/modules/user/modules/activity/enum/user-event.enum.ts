@@ -1,5 +1,5 @@
 export enum UserEvent {
-  MouseMove = 'MouseMove',
+  MouseMove= 'MouseMove',
   MouseClick = 'MouseClick',
-  KeyPress = 'KeyPress'
+  KeyPress = 'KeyPress',
 }

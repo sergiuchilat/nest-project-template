@@ -18,7 +18,7 @@ import {
   Pagination,
 } from 'nestjs-typeorm-paginate';
 import { CountryItemDropdownDto } from './dto/country.item.dropdown.dto';
-import { SortOrder } from '../../../validators/typeorm.sort.validator';
+import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import CountryFiltersBuilder from './builders/country.filters.builder';
 

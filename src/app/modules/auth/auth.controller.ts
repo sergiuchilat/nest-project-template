@@ -6,9 +6,7 @@ import { UserLoginResponseDto } from './dto/user-login.response.dto';
 import { UserRegisterPayloadDto } from './dto/user-register.payload.dto';
 import { UserRegisterResponseDto } from './dto/user-register.response.dto';
 import { EventEmitter2 } from "@nestjs/event-emitter";
-import {AuthEvent} from "@/app/modules/auth/enum/auth.events.enum";
-import {UserPingResponseDto} from "@/app/modules/auth/dto/user-ping.response.dto";
-import {UserPingPayloadDto} from "@/app/modules/auth/dto/user-ping.payload.dto";
+import {AuthEvent} from "@/app/modules/auth/enum/auth-event.enum";
 
 @ApiTags('Authentication')
 @Controller('/auth')
@@ -31,17 +29,6 @@ export class AuthController {
       this.eventEmitter.emit(AuthEvent.UserLoggedIn, user.email);
     }
     return response;
-  }
-
-  @Post('ping')
-  @ApiOperation({ summary: 'Track user activity' })
-  @ApiOkResponse({
-    description: 'User data',
-    type: UserPingResponseDto,
-  })
-  async trackActivity(@Body() user: UserPingPayloadDto) {
-    this.eventEmitter.emit(AuthEvent.UserActivity, user);
-    return user;
   }
 
   @Post('register')

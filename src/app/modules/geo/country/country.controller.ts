@@ -29,9 +29,9 @@ import { CountryCreateDto } from './dto/country.create.payload.dto';
 import { CountryItemDto } from './dto/country.item.dto';
 import { LocationItemDto } from '@/app/modules/geo/location/dto/location.item.dto';
 import { RegionItemDto } from '@/app/modules/geo/region/dto/region.item.dto';
-import { RolesGuard } from '@/app/modules/user/roles/roles.decorator';
-import { UserRole } from '@/app/modules/user/roles/role.enum';
-import { SortOrder } from '@/app/validators/typeorm.sort.validator';
+import { RolesGuard } from '@/app/modules/user/modules/user/roles/roles.decorator';
+import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
+import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.interceptor';
 

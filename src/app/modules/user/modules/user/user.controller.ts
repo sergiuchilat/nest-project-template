@@ -18,16 +18,16 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { AdminRegisterDto } from './dto/admin.register.dto';
-import { UserRegisterResponseDto } from '../auth/dto/user-register.response.dto';
+import { AdminRegisterDto } from '@/app/modules/user/modules/user/dto/admin.register.dto';
+import { UserRegisterResponseDto } from '../../../auth/dto/user-register.response.dto';
 import { UserService } from './user.service';
-import { RolesGuard } from './roles/roles.decorator';
-import { UserRole } from './roles/role.enum';
+import { RolesGuard } from '@/app/modules/user/modules/user/roles/roles.decorator';
+import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
 import { Request, Response } from 'express';
-import { UserItemDto } from './dto/user.item.dto';
-import { CountryItemDto } from '../geo/country/dto/country.item.dto';
-import { UserUpdateDto } from './dto/user.update.dto';
-import { UserUpdatePasswordDto } from './dto/user.update.password.dto';
+import { UserItemDto } from '@/app/modules/user/modules/user/dto/user.item.dto';
+import { CountryItemDto } from '../../../geo/country/dto/country.item.dto';
+import { UserUpdateDto } from '@/app/modules/user/modules/user/dto/user.update.dto';
+import { UserUpdatePasswordDto } from '@/app/modules/user/modules/user/dto/user.update.password.dto';
 import { plainToInstance } from 'class-transformer';
 import { User } from './user.entity';
 

@@ -6,15 +6,15 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
-import { UserRegisterPayloadDto } from '../auth/dto/user-register.payload.dto';
-import { UserRegisterResponseDto } from '../auth/dto/user-register.response.dto';
+import { User } from '@/app/modules/user/modules/user/user.entity';
+import { UserRegisterPayloadDto } from '../../../auth/dto/user-register.payload.dto';
+import { UserRegisterResponseDto } from '../../../auth/dto/user-register.response.dto';
 import { compare, hash } from 'bcrypt';
-import { UserRole } from './roles/role.enum';
+import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
 import { plainToInstance } from 'class-transformer';
-import { UserItemDto } from './dto/user.item.dto';
-import { UserUpdateDto } from './dto/user.update.dto';
-import { UserUpdatePasswordDto } from './dto/user.update.password.dto';
+import { UserItemDto } from '@/app/modules/user/modules/user/dto/user.item.dto';
+import { UserUpdateDto } from '@/app/modules/user/modules/user/dto/user.update.dto';
+import { UserUpdatePasswordDto } from '@/app/modules/user/modules/user/dto/user.update.password.dto';
 
 @Injectable()
 export class UserService {
