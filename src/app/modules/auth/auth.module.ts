@@ -6,7 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
 import AppConfig from '@/config/app-config';
-import { EventsGateway } from "@/app/modules/events-gateway/events.gateway";
+import { EventsGateway } from "@/app/services/events-gateway/events.gateway";
 import { AuthEventsController } from "@/app/modules/auth/auth.events.controller";
 
 @Module({
