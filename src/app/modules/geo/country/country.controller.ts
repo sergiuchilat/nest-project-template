@@ -19,6 +19,7 @@ import { CountryService } from './country.service';
 import { RegionService } from '../region/region.service';
 import { LocationService } from '../location/location.service';
 import {
+  ApiBearerAuth,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
@@ -37,7 +38,7 @@ import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.in
 
 @ApiTags('Countries')
 @Controller('/countries')
-//@ApiBearerAuth('jwt')
+@ApiBearerAuth('jwt')
 // @UseFilters(AllExceptionsFilter)
 export class CountryController {
   constructor(
