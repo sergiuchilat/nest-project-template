@@ -25,31 +25,27 @@ export class CreateCountryTable1664539696219 implements MigrationInterface {
                         name: "code",
                         type: "varchar",
                         length: "3",
-                        isNullable: false
+                        isNullable: false,
+                        isUnique: true
                     },
                     {
-                        name: "created_at",
+                        name: "createdAt",
                         type: "timestamp",
                         default: "CURRENT_TIMESTAMP"
                     },
                     {
-                        name: "created_by",
+                        name: "createdBy",
                         type: "int",
                         isNullable: false
                     },
                     {
-                        name: "updated_at",
+                        name: "updatedAt",
                         type: "timestamp",
                         default: "CURRENT_TIMESTAMP"
                     },
                     {
-                        name: "updated_by",
+                        name: "updatedBy",
                         type: "int",
-                        isNullable: true
-                    },
-                    {
-                        name: "deleted_at",
-                        type: "timestamp",
                         isNullable: true
                     }
                 ]

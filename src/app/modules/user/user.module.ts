@@ -8,6 +8,7 @@ import { RolesGuard } from '../../middleware/guards/roles.guard';
 import { UserActivityController } from "@/app/modules/user/modules/activity/user-activity.controller";
 import { UserActivityEventsController } from "@/app/modules/user/modules/activity/user-activity.events.controller";
 import { EventsGateway } from "@/app/services/events-gateway/events.gateway";
+import {UserSeedService} from "@/app/modules/user/modules/user/user.seed.service";
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
@@ -19,8 +20,9 @@ import { EventsGateway } from "@/app/services/events-gateway/events.gateway";
         provide: APP_GUARD,
         useClass: RolesGuard,
       },
+      UserSeedService
   ],
-  exports: [UserService],
+  exports: [UserService, UserSeedService],
   controllers: [UserController, UserActivityController, UserActivityEventsController],
 })
 export class UserModule {}

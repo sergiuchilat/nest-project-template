@@ -98,8 +98,6 @@ export class CountryService {
     country: CountryCreateDto,
     user: any,
   ): Promise<CountryCreateResponseDto> | undefined {
-    console.log(country);
-    console.log(user)
     const countryEntity = plainToInstance(Country, country);
 
     const existingCountry = await this.countryRepository.findOne({
@@ -111,6 +109,7 @@ export class CountryService {
     }
     countryEntity.createdBy = user.props.id;
     countryEntity.updatedBy = user.props.id;
+
     return await this.countryRepository.save(countryEntity);
   }
 

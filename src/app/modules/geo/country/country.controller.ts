@@ -222,7 +222,7 @@ export class CountryController {
   }
 
   @Post()
-  @RolesGuard(UserRole.ADMIN)
+  //@RolesGuard(UserRole.ADMIN)
   @ApiOperation({ summary: 'Create a new country' })
   @ApiOkResponse({
     description: 'Added country',
