@@ -4,12 +4,12 @@
         "requestTimeout": 9999
     },
     "db": {
-        "driver": "mysql",
+        "driver": "postgres",
         "host": "localhost",
-        "port": 3306,
-        "user": "root",
-        "password": "root",
-        "name": "test"
+        "port": 5432,
+        "user": "test",
+        "password": "test",
+        "name": "test-typeorm"
     },
     "jwt": {
         "tocken_expires_in": "1h",

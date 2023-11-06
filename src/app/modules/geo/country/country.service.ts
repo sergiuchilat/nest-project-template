@@ -98,6 +98,8 @@ export class CountryService {
     country: CountryCreateDto,
     user: any,
   ): Promise<CountryCreateResponseDto> | undefined {
+    console.log(country);
+    console.log(user)
     const countryEntity = plainToInstance(Country, country);
 
     const existingCountry = await this.countryRepository.findOne({
@@ -171,5 +173,9 @@ export class CountryService {
     } catch (e) {
       throw new NotFoundException();
     }
+  }
+
+  async seed(){
+    console.log('Seeding countries...');
   }
 }

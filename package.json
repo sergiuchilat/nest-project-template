@@ -18,10 +18,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
-    "migration:run": "npm run typeorm migration:run -- -d ./src/database/config/typeorm-migrate.config.ts",
-    "migration:generate": "npm run typeorm -- -d ./src/database/config/typeorm-migrate.config.ts migration:generate ./src/database/migrations/$npm_config_name",
-    "migration:create": "npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
-    "migration:revert": "npm run typeorm -- -d ./src/database/config/typeorm-migrate.config.ts migration:revert"
+    "db:migrate:dev": "nest build && npm run typeorm migration:run -- -d ./dist/database/config/typeorm.config.js",
+    "migration:create": "nest build && npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
+    "migration:generate": "nest build && npm run typeorm -- -d ./dist/database/config/typeorm.config.js migration:generate ./dist/database/migrations/$npm_config_name",
+    "db:migrate:dev:rollback": "nest build && npm run typeorm -- -d ./dist/database/config/typeorm.config.js migration:revert",
+    "seed": "nest build && node dist/database/seeds/seed.js --name=$npm_config_name"
   },
   "dependencies": {
     "@faker-js/faker": "^8.1.0",
@@ -59,12 +60,14 @@
     "rxjs": "^7.2.0",
     "socket.io": "^4.7.2",
     "typeorm": "^0.3.17",
-    "typeorm-extension": "^3.1.1"
+    "typeorm-extension": "^3.1.1",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.1.17",
     "@nestjs/schematics": "^10.0.2",
     "@nestjs/testing": "^10.2.5",
+    "@types/faker": "^6.6.9",
     "@types/jest": "28.1.8",
     "@types/node": "^16.0.0",
     "@types/passport-jwt": "^3.0.6",
@@ -75,7 +78,6 @@
     "eslint": "^8.0.1",
     "eslint-config-nestjs": "^0.7.3",
     "jest": "28.1.3",
-    "nestjs-seeder": "^0.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
     "ts-jest": "28.0.8",
