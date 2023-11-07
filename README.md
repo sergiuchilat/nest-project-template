@@ -69,6 +69,8 @@ Author: Sergiu Chilat
 Contributors:
 - Vlad Verestiuc [https://github.com/vvlad](https://github.com/vlad)
 - Corina Cernolev [https://github.com/CernolevCorina](https://github.com/CernolevCorina)
+- Vadim Poscoi [https://github.com/Vady4ek](https://github.com/Vady4ek)
+- Daniel Maga [https://github.com/magadanuhak](https://github.com/magadanuhak)
 
 
 ## License
