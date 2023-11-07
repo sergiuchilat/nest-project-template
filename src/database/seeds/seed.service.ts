@@ -21,11 +21,12 @@ export class SeedService {
     }
 
     public async seedAll(cleanInstall: boolean = false, createAdmin: boolean = false) {
+        await this.seed('users', cleanInstall);
         if(createAdmin){
             await this.userSeedService.createAdmin();
         }
         await this.seed('countries', cleanInstall);
-        await this.seed('users', cleanInstall);
+
     }
 
     private async countries(cleanInstall: boolean = false) {
