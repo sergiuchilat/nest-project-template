@@ -27,4 +27,10 @@ export class CountrySeedService {
           }
       }
   }
+
+  async clean() {
+      console.log('Start cleaning: countries...')
+      await this.countryService.truncate();
+      console.log('Cleaning complete: countries.')
+  }
 }

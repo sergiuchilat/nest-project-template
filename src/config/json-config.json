@@ -22,5 +22,10 @@
         "title": "Sample project API documentation",
         "description": "Sample project API documentation description",
         "authName": "Bearer token"
+    },
+    "appInstall":{
+        "admin_username": "root",
+        "admin_email": "root@domain.com",
+        "admin_password": "123456789!0Ab"
     }
 }

@@ -170,4 +170,8 @@ export class UserService {
   async encodePassword(password: string): Promise<string> {
     return await hash(password, 12);
   }
+
+  async truncate(){
+    await this.userRepository.query('TRUNCATE TABLE users RESTART IDENTITY CASCADE');
+  }
 }

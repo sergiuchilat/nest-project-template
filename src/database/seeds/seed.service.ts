@@ -9,19 +9,36 @@ export class SeedService {
         private readonly countrySeedService: CountrySeedService,
         private readonly userSeedService: UserSeedService
     ) { }
-    public async seed(seedMethod: string) {
+
+    public async seed(seedMethod: string, cleanInstall: boolean = false) {
         try {
-            return await this[seedMethod]();
+            console.log(`Start seeding: ${seedMethod}...`);
+            await this[seedMethod](cleanInstall);
+            console.log(`Seeding complete: ${seedMethod}.`);
         } catch (e) {
             throw new Error(`Seeder ${seedMethod} not found.`);
         }
     }
 
-    private async countries() {
+    public async seedAll(cleanInstall: boolean = false, createAdmin: boolean = false) {
+        if(createAdmin){
+            await this.userSeedService.createAdmin();
+        }
+        await this.seed('countries', cleanInstall);
+        await this.seed('users', cleanInstall);
+    }
+
+    private async countries(cleanInstall: boolean = false) {
+        if(cleanInstall){
+            await this.countrySeedService.clean();
+        }
         await this.countrySeedService.seed();
     }
 
-    private async users() {
+    private async users(cleanInstall: boolean = false) {
+        if(cleanInstall){
+            await this.userSeedService.clean();
+        }
         await this.userSeedService.seed();
     }
 }

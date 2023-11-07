@@ -174,7 +174,7 @@ export class CountryService {
     }
   }
 
-  async seed(){
-    console.log('Seeding countries...');
+  async truncate(){
+    await this.countryRepository.query('TRUNCATE TABLE countries RESTART IDENTITY CASCADE');
   }
 }

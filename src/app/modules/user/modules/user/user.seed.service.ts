@@ -3,6 +3,7 @@ import {
   Injectable
 } from '@nestjs/common';
 import { UserService } from "@/app/modules/user/modules/user/user.service";
+import AppConfig from "@/config/app-config";
 
 @Injectable()
 export class UserSeedService {
@@ -68,4 +69,20 @@ export class UserSeedService {
       // //     password: '123456',
       // // })
   }
+
+    async clean() {
+        console.log('Start cleaning: users...')
+        await this.userService.truncate();
+        console.log('Cleaning complete: users.')
+    }
+
+    async createAdmin() {
+        console.log('Start creating admin...')
+        await this.userService.createAdmin({
+            name: AppConfig.appInstall.admin_username,
+            email: AppConfig.appInstall.admin_email,
+            password: AppConfig.appInstall.admin_password
+        })
+        console.log('Admin user created.')
+    }
 }

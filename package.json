@@ -22,7 +22,11 @@
     "migration:create": "nest build && npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
     "migration:generate": "nest build && npm run typeorm -- -d ./dist/database/config/typeorm.config.js migration:generate ./dist/database/migrations/$npm_config_name",
     "db:migrate:dev:rollback": "nest build && npm run typeorm -- -d ./dist/database/config/typeorm.config.js migration:revert",
-    "seed": "nest build && node dist/database/seeds/seed.js --name=$npm_config_name"
+    "seed": "nest build && node dist/database/seeds/seed.js --name=$npm_config_name",
+    "seed:clean": "nest build && node dist/database/seeds/seed.js --name=$npm_config_name --clean",
+    "app:install": "nest build && npm run db:migrate:dev && node dist/database/seeds/seed.js --install",
+    "app:install:clean": "nest build && npm run db:migrate:dev && node dist/database/seeds/seed.js --install --clean",
+    "app:install:create_admin_user": "nest build && npm run db:migrate:dev && node dist/database/seeds/seed.js --install --clean --create_admin"
   },
   "dependencies": {
     "@faker-js/faker": "^8.1.0",

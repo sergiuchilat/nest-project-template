@@ -42,6 +42,11 @@ class AppConfigSingleton {
             title: null,
             description: null,
             authName: null
+        },
+        appInstall: {
+            admin_username: null,
+            admin_email: null,
+            admin_password: null
         }
     };
 

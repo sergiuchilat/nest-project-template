@@ -30,6 +30,11 @@ export default class JsonPlainConfigStrategy {
                 title: jsonPlainConfig.docs.title,
                 description: jsonPlainConfig.docs.description,
                 authName: jsonPlainConfig.docs.authName
+            },
+            appInstall: {
+                admin_username: jsonPlainConfig.appInstall.admin_username,
+                admin_email: jsonPlainConfig.appInstall.admin_email,
+                admin_password: jsonPlainConfig.appInstall.admin_password
             }
         }
     }

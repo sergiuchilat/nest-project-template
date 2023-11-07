@@ -31,6 +31,11 @@ export default class EnvConfigStrategy {
                 title: process.env.DOCS_TITLE,
                 description: process.env.DOCS_DESCRIPTION,
                 authName: process.env.DOCS_AUTH_NAME
+            },
+            appInstall: {
+                admin_username: process.env.APP_INSTALL_ADMIN_USERNAME,
+                admin_email: process.env.APP_INSTALL_ADMIN_EMAIL,
+                admin_password: process.env.APP_INSTALL_ADMIN_PASSWORD
             }
         }
     }
