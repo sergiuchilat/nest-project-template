@@ -100,7 +100,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-# Detailed project description
+# Detailed project documentation
  - [.env structure](readme/readme.env.md)
   - [Migrations](readme/readme.migration.env.md)
  - [Seeders](readme/readme.seeder.env.md)
