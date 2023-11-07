@@ -1,6 +1,6 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) JS strarter Template with TypeORM
+[Nest JS](https://github.com/nestjs/nest) strarter Template with TypeORM
 
 ## Installation
 
@@ -31,9 +31,42 @@ $ npm run migration:run
 
 ```bash
 # Revert last executed migration
-$ npm run migration:revert
+$ npm run migration:rollback
 ```
-> Will run all new migrations from ``./database/migrations/`` folder
+> Will revert last executed migration from from ``./database/migrations/`` folder
+
+## Run data seeds
+
+### Run one specified seed
+```bash
+$ npm run seed --name=SEED_NAME
+```
+
+### Run one specified seed an clean seeded table first
+```bash
+$ npm run seed:clean --name=SEED_NAME
+```
+
+> SEED_NAME must be registered in ``src/database/seeds/seed.service.ts``. 
+
+## Install application
+### Install
+Execute all migrations and seeders
+```bash
+$ npm run app:install
+```
+
+### Clean install
+Clean all seeded tables then execute all migrations and seeders
+```bash
+$ npm run app:install:clean
+```
+
+### Cleans install an create admin user
+Clean all seeded tables then execute all migrations and seedersthen create admin user with credentials from the app config
+```bash
+$ npm run app:install:create_admin_user
+```
 
 ## Running the app
 
@@ -67,14 +100,24 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+# Detailed project description
+ - [.env structure](readme/readme.env.md)
+  - [Migrations](readme/readme.migration.env.md)
+ - [Seeders](readme/readme.seeder.env.md)
+ - [CRUD modules](readme/readme.crud.env.md)
+ - [Authentification](readme/readme.auth.env.md)
+ - [Sockets](readme/readme.socket.env.md)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
-- Author - [Sergiu Chilat](https://sergiu.live)
-- Github Profile - [https://github.com/sergiuchilat](https://github.com/sergiuchilat)
+Author: Sergiu Chilat
+- Personal website: [Sergiu Chilat](https://sergiu.live) 
+- Github Profile [https://github.com/sergiuchilat](https://github.com/sergiuchilat)
+
+Contributors:
+- Vlad Verestiuc [https://github.com/vvlad](https://github.com/vlad)
+- Corina Cernolev [https://github.com/CernolevCorina](https://github.com/CernolevCorina)
 
 
 ## License
