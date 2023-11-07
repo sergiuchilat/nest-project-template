@@ -1,31 +1,31 @@
 {
-    "app": {
-        "port": 3000,
-        "requestTimeout": 9999
-    },
-    "db": {
-        "driver": "postgres",
-        "host": "localhost",
-        "port": 5432,
-        "user": "test",
-        "password": "test",
-        "name": "test-typeorm"
-    },
-    "jwt": {
-        "tocken_expires_in": "1h",
-        "secret_key": "secret"
-    },
-    "docs": {
-        "generate": true,
-        "path": "docs",
-        "version": "1.0.0",
-        "title": "Sample project API documentation",
-        "description": "Sample project API documentation description",
-        "authName": "Bearer token"
-    },
-    "appInstall":{
-        "admin_username": "root",
-        "admin_email": "root@domain.com",
-        "admin_password": "123456789!0Ab"
-    }
+  "app": {
+    "port": 3000,
+    "requestTimeout": 9999
+  },
+  "db": {
+    "driver": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "user": "test",
+    "password": "test",
+    "name": "test-typeorm"
+  },
+  "jwt": {
+    "tocken_expires_in": "1h",
+    "secret_key": "secret"
+  },
+  "docs": {
+    "generate": true,
+    "path": "docs",
+    "version": "1.0.0",
+    "title": "Sample project API documentation",
+    "description": "Sample project API documentation description",
+    "authName": "Bearer token"
+  },
+  "appInstall":{
+    "admin_username": "root",
+    "admin_email": "root@domain.com",
+    "admin_password": "123456789!0Ab"
+  }
 }

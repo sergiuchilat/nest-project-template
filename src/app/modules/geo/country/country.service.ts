@@ -26,9 +26,9 @@ import CountryFiltersBuilder from './builders/country.filters.builder';
 export class CountryService {
   constructor(
     @InjectRepository(Country)
-    private countryRepository: Repository<Country>,
+    private readonly countryRepository: Repository<Country>,
     @InjectRepository(Region)
-    private regionRepository: Repository<Region>,
+    private readonly regionRepository: Repository<Region>,
   ) {}
 
   async getAllForDropdown(): Promise<CountryItemDropdownDto[]> {

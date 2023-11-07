@@ -6,11 +6,11 @@ export class UserLoginPayloadDto {
   @Length(10, 50, {
     message: 'Email must contain [$constraint1, $constraint2] characters',
   })
-  email: string;
+    email: string;
 
   @ApiProperty({ example: 'password', description: 'Password' })
   @Length(8, 50, {
     message: 'Name must contain [$constraint1, $constraint2] characters',
   })
-  password: string;
+    password: string;
 }

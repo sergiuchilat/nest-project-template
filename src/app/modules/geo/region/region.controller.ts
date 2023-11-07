@@ -12,8 +12,8 @@ import { Request, Response } from 'express';
 import { RegionService } from './region.service';
 import { LocationService } from '../location/location.service';
 import { ApiTags } from '@nestjs/swagger';
-import {RequestTimeoutInterceptor} from "@/app/interceptors/request-timeout.interceptor";
-import {LoggingInterceptor} from "@/app/interceptors/logging.interceptor";
+import {RequestTimeoutInterceptor} from '@/app/interceptors/request-timeout.interceptor';
+import {LoggingInterceptor} from '@/app/interceptors/logging.interceptor';
 
 @ApiTags('Regions')
 @Controller('/regions')

@@ -6,5 +6,5 @@ export class UserUpdateDto {
   @Length(4, 50, {
     message: 'Name must contain [$constraint1, $constraint2] characters',
   })
-  name: string;
+    name: string;
 }

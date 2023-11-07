@@ -1,5 +1,5 @@
 import { registerAs } from '@nestjs/config';
-import AppConfig from "@/config/app-config"
+import AppConfig from '@/config/app-config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 
 const config = {
@@ -13,8 +13,8 @@ const config = {
   migrations: ['dist/**/database/migrations/*.js'],
   autoLoadEntities: true,
   synchronize: false,
-}
+};
 
 export default registerAs('typeorm', () => config);
 
-export const connectionSource = new DataSource(config as DataSourceOptions)
+export const connectionSource = new DataSource(config as DataSourceOptions);

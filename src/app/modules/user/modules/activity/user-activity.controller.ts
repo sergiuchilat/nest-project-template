@@ -9,9 +9,9 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import {UserActivityResponseDto} from "@/app/modules/user/modules/activity/dto/user-activity.response.dto";
-import {UserActivityPayloadDto} from "@/app/modules/user/modules/activity/dto/user-activity.payload.dto";
-import {EventEmitter2} from "@nestjs/event-emitter";
+import {UserActivityResponseDto} from '@/app/modules/user/modules/activity/dto/user-activity.response.dto';
+import {UserActivityPayloadDto} from '@/app/modules/user/modules/activity/dto/user-activity.payload.dto';
+import {EventEmitter2} from '@nestjs/event-emitter';
 
 @ApiTags('User activity tracking')
 @Controller('/user-activity')
@@ -19,7 +19,7 @@ import {EventEmitter2} from "@nestjs/event-emitter";
 
 export class UserActivityController {
   constructor(
-      private eventEmitter: EventEmitter2
+      private readonly eventEmitter: EventEmitter2
   ) {}
 
   @Post('')

@@ -8,9 +8,9 @@ import { Region } from '../region/region.entity';
 export class LocationService {
   constructor(
     @InjectRepository(Location)
-    private locationRepository: Repository<Location>,
+    private readonly locationRepository: Repository<Location>,
     @InjectRepository(Region)
-    private regionRepository: Repository<Region>,
+    private readonly regionRepository: Repository<Region>,
   ) {}
 
   async getAll(): Promise<Location[]> {

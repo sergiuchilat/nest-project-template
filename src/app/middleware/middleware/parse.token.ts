@@ -5,7 +5,7 @@ import { Reflector } from '@nestjs/core';
 
 @Injectable()
 export class ParseToken implements NestMiddleware {
-  constructor(private reflector: Reflector, private authService: AuthService) {}
+  constructor(private readonly reflector: Reflector, private readonly authService: AuthService) {}
   private static parseAuthToken(request): string {
     return request.headers?.authorization?.replace('Bearer ', '') || '';
   }

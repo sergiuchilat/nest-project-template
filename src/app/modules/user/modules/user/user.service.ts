@@ -19,7 +19,7 @@ import { UserUpdatePasswordDto } from '@/app/modules/user/modules/user/dto/user.
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
   async getAll(): Promise<UserItemDto[]> {
@@ -133,7 +133,7 @@ export class UserService {
 
     if (await compare(newValue.new_password, existingUser.password)) {
       throw new UnprocessableEntityException(
-        "You can't use one of old password. Please select a new password",
+        'You can\'t use one of old password. Please select a new password',
       );
     }
 
