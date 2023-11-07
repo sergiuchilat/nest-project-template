@@ -49,7 +49,6 @@ module.exports = {
     'dot-notation': 'warn',
     'eqeqeq': 'warn',
 
-//Clasa - pascal
     '@typescript-eslint/naming-convention': [
       'error',
       {
