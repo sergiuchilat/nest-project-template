@@ -1,10 +1,10 @@
 import { Equal, In, LessThanOrEqual, Like, MoreThanOrEqual } from 'typeorm';
-import { CountryFilters } from '../validators/country.filters.validator';
+// import { CountryFilters } from '../validators/country.filters.validator';
 import { isValidDate } from '@/app/utils/date';
 
 export default class CountryFiltersBuilder {
   private readonly filters: any = {};
-  constructor(filters: CountryFilters) {
+  constructor(filters: any) {
     if (filters && filters.name && filters.name.length) {
       this.filters.name = Like(`%${filters.name}%`);
     }
