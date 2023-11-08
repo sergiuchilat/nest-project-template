@@ -1,12 +1,7 @@
 import {Inject, Injectable} from '@nestjs/common';
 import { Cache } from 'cache-manager';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
-
-interface Result {
-    number: number;
-    series: number[];
-    cached: boolean;
-}
+import {FibonacciResultDto} from '@/app/modules/cached/dto/fibonacci.result.dto';
 
 @Injectable()
 export class CachedService {
@@ -33,8 +28,8 @@ export class CachedService {
     return fibonacciSeries;
   }
 
-  async getFibonacci(n: number): Promise<Result>  {
-    const cachedResult: Result = await this.cacheManager.get(`fibonacci-${n}`);
+  async getFibonacci(n: number): Promise<FibonacciResultDto>  {
+    const cachedResult: FibonacciResultDto = await this.cacheManager.get(`fibonacci-${n}`);
 
     if(cachedResult) {
       return {
@@ -44,7 +39,7 @@ export class CachedService {
       };
     }
     
-    const response: Result = {
+    const response: FibonacciResultDto = {
       number: this.fibonacci(n),
       series: this.generateFibonacciSeries(n),
       cached: false

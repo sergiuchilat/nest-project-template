@@ -1,5 +1,6 @@
 import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { CachedService } from './cached.service';
+import {FibonacciResultDto} from '@/app/modules/cached/dto/fibonacci.result.dto';
 
 @Controller('cached')
 export class CachedController {
@@ -8,7 +9,7 @@ export class CachedController {
   @Get('fibonacci/:number')
   getFibonacci(
       @Param('number', ParseIntPipe) number: number,
-  ){
+  ): Promise<FibonacciResultDto>{
     return this.cachedService.getFibonacci(number);
   }
 }
