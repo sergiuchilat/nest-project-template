@@ -4,12 +4,14 @@ import typeormConnector from '@/database/connectors/typeorm.connector';
 import EventEmitterConfig from '@/app/services/events-gateway/event-emitter.config';
 import middlewares from './middleware';
 import {SeedService} from '@/database/seeds/seed.service';
+import { CachedModule } from './modules/cached/cached.module';
 
 @Module({
   imports: [
     ...typeormConnector,
     ...AppModules,
-    EventEmitterConfig
+    EventEmitterConfig,
+    CachedModule
   ],
   providers: [
     SeedService

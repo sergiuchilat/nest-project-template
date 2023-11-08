@@ -58,6 +58,7 @@ $ npm run test:cov
 - [CRUD modules](readme/crud.md)
 - [Authentification](readme/auth.md)
 - [Sockets](readme/socket.md)
+- [Cacke](readme/cache.md)
 
 
 ## Stay in touch
@@ -75,4 +76,4 @@ Contributors:
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This is open source project licensed under the [MIT license](https://opensource.org/license/mit/).
