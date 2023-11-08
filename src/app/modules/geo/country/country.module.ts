@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { CountryController } from './country.controller';
 import { CountryService } from './country.service';
-import { RegionService } from '../region/region.service';
+import { RegionService } from '@/app/modules/geo/region/region.service';
 import { Country } from './country.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Region } from '../region/region.entity';
-import { LocationService } from '../location/location.service';
-import { Location } from '../location/location.entity';
+import { Region } from '@/app/modules/geo/region/region.entity';
+import { LocationService } from '@/app/modules/geo/location/location.service';
+import { Location } from '@/app/modules/geo/location/location.entity';
 import { RolesGuard } from '@/app/middleware/guards/roles.guard';
 import { APP_GUARD } from '@nestjs/core';
 import {CountrySeedService} from '@/app/modules/geo/country/country.seed.service';

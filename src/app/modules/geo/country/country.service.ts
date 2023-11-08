@@ -10,7 +10,7 @@ import { CountryCreateDto } from './dto/country.create.payload.dto';
 import { CountryItemDto } from './dto/country.item.dto';
 import { plainToInstance } from 'class-transformer';
 import { CountryWithRegionsDto } from './dto/country.with-regions.dto';
-import { Region } from '../region/region.entity';
+import { Region } from '@/app/modules/geo/region/region.entity';
 import { CountryCreateResponseDto } from './dto/country.create.response.dto';
 import {
   IPaginationOptions,

@@ -16,8 +16,8 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CountryService } from './country.service';
-import { RegionService } from '../region/region.service';
-import { LocationService } from '../location/location.service';
+import { RegionService } from '@/app/modules/geo/region/region.service';
+import { LocationService } from '@/app/modules/geo/location/location.service';
 import {
   ApiBearerAuth,
   ApiOkResponse,

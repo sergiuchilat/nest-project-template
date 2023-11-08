@@ -10,7 +10,7 @@ import {
   DeleteDateColumn,
   BeforeSoftRemove,
 } from 'typeorm';
-import { Region } from '../region/region.entity';
+import { Region } from '@/app/modules/geo/region/region.entity';
 
 @Entity({
   name: 'countries',

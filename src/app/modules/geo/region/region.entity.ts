@@ -7,8 +7,8 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { Country } from '../country/country.entity';
-import { Location } from '../location/location.entity';
+import { Country } from '@/app/modules/geo/country/country.entity';
+import { Location } from '@/app/modules/geo/location/location.entity';
 
 @Entity({
   name: 'regions',

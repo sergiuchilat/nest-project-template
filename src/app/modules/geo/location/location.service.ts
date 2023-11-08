@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In } from 'typeorm';
 import { Location } from './location.entity';
-import { Region } from '../region/region.entity';
+import { Region } from '@/app/modules/geo/region/region.entity';
 
 @Injectable()
 export class LocationService {

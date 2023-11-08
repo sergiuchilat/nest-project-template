@@ -3,7 +3,7 @@ import { LocationController } from './location.controller';
 import { LocationService } from './location.service';
 import { Location } from './location.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Region } from '../region/region.entity';
+import { Region } from '@/app/modules/geo/region/region.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Location, Region])],
