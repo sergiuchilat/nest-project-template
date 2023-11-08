@@ -17,31 +17,31 @@ import { Region } from '../region/region.entity';
 })
 export class Country {
   @PrimaryGeneratedColumn()
-  id: number;
+    id: number;
 
   @Column({
     length: 100,
     unique: true,
     nullable: false,
   })
-  name: string;
+    name: string;
 
   @Column({
     length: 3,
     unique: true,
     nullable: false,
   })
-  code: string;
+    code: string;
 
   @Column({
     nullable: false,
   })
-  createdBy: number;
+    createdBy: number;
 
   @Column({
     nullable: false,
   })
-  updatedBy: number;
+    updatedBy: number;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -67,10 +67,10 @@ export class Country {
     nullable: true,
     default: null,
   })
-  deletedBy: number;
+    deletedBy: number;
 
   @OneToMany(() => Region, (region) => region.countryId)
-  regions: Region[];
+    regions: Region[];
 
   @BeforeInsert()
   public beforeInsert() {

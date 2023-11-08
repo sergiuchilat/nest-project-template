@@ -94,13 +94,13 @@ export class CountryController {
   @UseInterceptors(RequestTimeoutInterceptor)
   async getAllPaginated(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe)
-    page: number,
+      page: number,
     @Query('limit', new DefaultValuePipe(50), ParseIntPipe)
-    limit: number,
+      limit: number,
     @Query('sort_order', new DefaultValuePipe(SortOrder.DESC))
-    sort_order: SortOrder,
+      sort_order: SortOrder,
     @Query('sort_by', new DefaultValuePipe(CountrySort.id))
-    sort_by: CountrySort,
+      sort_by: CountrySort,
     @Req() request: Request,
     @Res() response: Response,
   ) {
@@ -164,13 +164,13 @@ export class CountryController {
   @UseInterceptors(RequestTimeoutInterceptor)
   async getAllWithDeleted(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe)
-    page: number,
+      page: number,
     @Query('limit', new DefaultValuePipe(50), ParseIntPipe)
-    limit: number,
+      limit: number,
     @Query('sort_order', new DefaultValuePipe(SortOrder.DESC))
-    sort_order: SortOrder,
+      sort_order: SortOrder,
     @Query('sort_by', new DefaultValuePipe(CountrySort.id))
-    sort_by: CountrySort,
+      sort_by: CountrySort,
     @Req() request: Request,
     @Res() response: Response,
   ) {
@@ -323,7 +323,7 @@ export class CountryController {
   })
   async regions(
     @Param('id', ParseIntPipe) id: number,
-    Request,
+      Request,
     @Res() response: Response,
   ) {
     response

@@ -13,27 +13,27 @@ import { Region } from '../region/region.entity';
 })
 export class Location {
   @PrimaryGeneratedColumn()
-  id: number;
+    id: number;
 
   @Column({
     length: 50,
     unique: true,
     nullable: false,
   })
-  name: string;
+    name: string;
 
   @Column({
     length: 2,
     unique: true,
     nullable: false,
   })
-  code: string;
+    code: string;
 
   @Column({
     type: 'int',
     nullable: false,
   })
-  regionId: number;
+    regionId: number;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -49,5 +49,5 @@ export class Location {
   public updatedAt: Date;
 
   @ManyToOne(() => Region, (region) => region.locations)
-  region: Region;
+    region: Region;
 }

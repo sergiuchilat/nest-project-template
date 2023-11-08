@@ -5,16 +5,16 @@ import { UserLoginPayloadDto } from './dto/user-login.payload.dto';
 import { UserLoginResponseDto } from './dto/user-login.response.dto';
 import { UserRegisterPayloadDto } from './dto/user-register.payload.dto';
 import { UserRegisterResponseDto } from './dto/user-register.response.dto';
-import { EventEmitter2 } from "@nestjs/event-emitter";
-import {AuthEvent} from "@/app/modules/auth/enum/auth-event.enum";
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import {AuthEvent} from '@/app/modules/auth/enum/auth-event.enum';
 
 @ApiTags('Authentication')
 @Controller('/auth')
 // @UseFilters(AllExceptionsFilter)
 export class AuthController {
   constructor(
-      private authService: AuthService,
-      private eventEmitter: EventEmitter2
+      private readonly authService: AuthService,
+      private readonly eventEmitter: EventEmitter2
   ) {}
 
   @Post('login')
@@ -24,7 +24,7 @@ export class AuthController {
     type: UserLoginResponseDto,
   })
   async login(@Body() user: UserLoginPayloadDto) {
-    const response  = this.authService.login(user);
+    const response  = await this.authService.login(user);
     if(response){
       this.eventEmitter.emit(AuthEvent.UserLoggedIn, user.email);
     }

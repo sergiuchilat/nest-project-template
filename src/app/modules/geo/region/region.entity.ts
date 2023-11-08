@@ -15,27 +15,27 @@ import { Location } from '../location/location.entity';
 })
 export class Region {
   @PrimaryGeneratedColumn()
-  id: number;
+    id: number;
 
   @Column({
     length: 50,
     unique: true,
     nullable: false,
   })
-  name: string;
+    name: string;
 
   @Column({
     length: 2,
     unique: true,
     nullable: false,
   })
-  code: string;
+    code: string;
 
   @Column({
     type: 'int',
     nullable: false,
   })
-  countryId: number;
+    countryId: number;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -51,8 +51,8 @@ export class Region {
   public updatedAt: Date;
 
   @ManyToOne(() => Country, (country) => country.regions)
-  country: Country;
+    country: Country;
 
   @OneToMany(() => Location, (location) => location.regionId)
-  locations: Location[];
+    locations: Location[];
 }

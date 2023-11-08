@@ -11,44 +11,44 @@ import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+    id: number;
 
   @Column({
     length: 50,
     nullable: false,
   })
-  name: string;
+    name: string;
 
   @Index('email_index')
   @Column({
     unique: true,
   })
-  email: string;
+    email: string;
 
   @Column()
-  password: string;
+    password: string;
 
   @Column({
     type: 'enum',
     enum: UserRole,
     default: UserRole.USER,
   })
-  role: UserRole;
+    role: UserRole;
 
   @Column({
     default: 0,
   })
-  verified: number;
+    verified: number;
 
   @Column({
     nullable: false,
   })
-  createdBy: number;
+    createdBy: number;
 
   @Column({
     nullable: false,
   })
-  updatedBy: number;
+    updatedBy: number;
 
   @CreateDateColumn({
     type: 'timestamp',

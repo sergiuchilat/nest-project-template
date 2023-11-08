@@ -10,5 +10,5 @@ export class UserLoginResponseDto {
   })
   @Expose()
   @IsString()
-  token: string;
+    token: string;
 }

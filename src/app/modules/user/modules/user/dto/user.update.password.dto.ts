@@ -6,7 +6,7 @@ export class UserUpdatePasswordDto {
   @Length(8, 50, {
     message: 'Password must contain [$constraint1, $constraint2] characters',
   })
-  old_password: string;
+    old_password: string;
 
   @ApiProperty({ example: '34tnj3365!*bF', description: 'Password' })
   @Length(8, 50, {
@@ -15,7 +15,7 @@ export class UserUpdatePasswordDto {
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'Password too weak',
   })
-  new_password: string;
+    new_password: string;
 
   @ApiProperty({ example: '34tnj3365!*bF', description: 'Password' })
   @Length(8, 50, {
@@ -24,5 +24,5 @@ export class UserUpdatePasswordDto {
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'Password too weak',
   })
-  new_password_confirmation: string;
+    new_password_confirmation: string;
 }

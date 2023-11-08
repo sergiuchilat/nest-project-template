@@ -9,12 +9,12 @@ export class CountryItemDropdownDto {
     name: 'id',
   })
   @IsNumber()
-  value: number;
+    value: number;
 
   @ApiProperty({ example: 'Name', description: 'Country name' })
   @Expose({
     name: 'name',
   })
   @IsString()
-  text: string;
+    text: string;
 }

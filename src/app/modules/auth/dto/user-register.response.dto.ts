@@ -5,8 +5,8 @@ import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
 export class UserRegisterResponseDto {
   @ApiProperty({ example: 'mail@mail.com', description: 'Username' })
   @Expose()
-  email: string;
+    email: string;
 
   @ApiProperty({ example: 'admin|user', description: 'User role' })
-  role: UserRole;
+    role: UserRole;
 }

@@ -9,5 +9,5 @@ export class UserActivityResponseDto {
   })
   @Expose()
   @IsString()
-  email: string;
+    email: string;
 }

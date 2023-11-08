@@ -2,11 +2,11 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class RegionItemDto {
   @ApiProperty({ example: 1, description: 'Region id' })
-  id: number;
+    id: number;
 
   @ApiProperty({ example: 'Name', description: 'Region name' })
-  name: string;
+    name: string;
 
   @ApiProperty({ example: 'AA', description: 'Region code' })
-  code: string;
+    code: string;
 }

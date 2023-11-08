@@ -6,8 +6,8 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
 import AppConfig from '@/config/app-config';
-import { EventsGateway } from "@/app/services/events-gateway/events.gateway";
-import { AuthEventsController } from "@/app/modules/auth/auth.events.controller";
+import { EventsGateway } from '@/app/services/events-gateway/events.gateway';
+import { AuthEventsController } from '@/app/modules/auth/auth.events.controller';
 
 @Module({
   imports: [
@@ -21,10 +21,10 @@ import { AuthEventsController } from "@/app/modules/auth/auth.events.controller"
     }),
   ],
   providers: [
-      AuthService,
-      JwtStrategy,
-      Logger,
-      EventsGateway
+    AuthService,
+    JwtStrategy,
+    Logger,
+    EventsGateway
   ],
   exports: [AuthService],
   controllers: [AuthController, AuthEventsController],
