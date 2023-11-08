@@ -10,6 +10,7 @@ const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
   const seedService = app.get(SeedService);
   const seederNameArg: string = argv.name;
+
   if(argv.install) {
     try {
       console.log('Start seeding: all...');
@@ -17,6 +18,19 @@ const bootstrap = async () => {
       console.log('Seeding complete: all.');
     } catch (e){
       console.log('Error: Unable to install app');
+    }
+
+    await app.close();
+    return;
+  }
+
+  if(!argv.name){
+    try {
+      console.log('Start seeding: all...');
+      await seedService.seedAll();
+      console.log('Seeding complete: all.');
+    } catch (e){
+      console.log('Error: Unable to seed all');
     }
 
     await app.close();
