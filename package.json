@@ -58,6 +58,7 @@
     "moment": "^2.29.4",
     "mysql2": "^2.3.3",
     "nest-csv-parser": "^2.0.4",
+    "nest-winston": "^1.9.4",
     "nestjs-typeorm-paginate": "^4.0.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
@@ -69,6 +70,8 @@
     "socket.io": "^4.7.2",
     "typeorm": "^0.3.17",
     "typeorm-extension": "^3.1.1",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

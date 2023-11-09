@@ -35,6 +35,7 @@ import { UserRole } from '@/app/modules/user/modules/user/roles/role.enum';
 import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.interceptor';
+import {RequestLoggingConsoleInterceptor} from '@/app/interceptors/request-logging-console.interceptor';
 
 @ApiTags('Countries')
 @Controller('/countries')
@@ -91,7 +92,7 @@ export class CountryController {
     type: CountryItemDto,
     isArray: true,
   })
-  @UseInterceptors(RequestTimeoutInterceptor)
+  @UseInterceptors(RequestTimeoutInterceptor, RequestLoggingConsoleInterceptor)
   async getAllPaginated(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe)
       page: number,
@@ -229,6 +230,7 @@ export class CountryController {
     type: CountryItemDto,
     isArray: true,
   })
+  @UseInterceptors(RequestTimeoutInterceptor, RequestLoggingConsoleInterceptor)
   async create(
     @Body() createCountryDto: CountryCreateDto,
     @Req() request: Request,

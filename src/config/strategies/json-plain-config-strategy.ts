@@ -9,7 +9,17 @@ export default class JsonPlainConfigStrategy {
     this.config = {
       app: {
         port: jsonPlainConfig.app.port.toString(),
-        requestTimeout: jsonPlainConfig.app.requestTimeout
+        requestTimeout: jsonPlainConfig.app.requestTimeout,
+        log: {
+          error: {
+            filename: jsonPlainConfig.app.log.error.filename,
+            maxFiles: jsonPlainConfig.app.log.error.maxFiles
+          },
+          all: {
+            filename: jsonPlainConfig.app.log.all.filename,
+            maxFiles: jsonPlainConfig.app.log.all.maxFiles
+          }
+        }
       },
       db: {
         host: jsonPlainConfig.db.host,
@@ -21,7 +31,7 @@ export default class JsonPlainConfigStrategy {
       },
       jwt: {
         secret: jsonPlainConfig.jwt.secret_key,
-        expiresIn: jsonPlainConfig.jwt.tocken_expires_in
+        expiresIn: jsonPlainConfig.jwt.token_expires_in
       },
       docs: {
         generate: jsonPlainConfig.docs.generate,

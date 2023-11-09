@@ -3,6 +3,6 @@ export default [
   {
     name: 'parse_token',
     routes: '*',
-    guard: ParseToken,
+    guard: ParseToken
   },
 ];

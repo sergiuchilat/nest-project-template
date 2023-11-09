@@ -21,7 +21,17 @@ class AppConfigSingleton {
   private config: AppConfigInterface = {
     app: {
       port: null,
-      requestTimeout: 0
+      requestTimeout: 0,
+      log: {
+        error: {
+          filename: null,
+          maxFiles: null
+        },
+        all: {
+          filename: null,
+          maxFiles: null
+        }
+      }
     },
     db: {
       host: null,

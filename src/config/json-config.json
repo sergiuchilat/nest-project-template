@@ -1,7 +1,17 @@
 {
   "app": {
     "port": 3000,
-    "requestTimeout": 9999
+    "requestTimeout": 9999,
+    "log": {
+      "error": {
+        "filename": "logs/error.log",
+        "maxFiles": "5d"
+      },
+      "all": {
+        "filename": "logs/all.log",
+        "maxFiles": "1d"
+      }
+    }
   },
   "db": {
     "driver": "postgres",
@@ -12,7 +22,7 @@
     "name": "test-typeorm"
   },
   "jwt": {
-    "tocken_expires_in": "1h",
+    "token_expires_in": "1h",
     "secret_key": "secret"
   },
   "docs": {

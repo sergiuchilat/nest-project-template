@@ -59,6 +59,7 @@ $ npm run test:cov
 - [Authentification](readme/auth.md)
 - [Sockets](readme/socket.md)
 - [Cacke](readme/cache.md)
+- [Logger](readme/logger.md)
 
 
 ## Stay in touch

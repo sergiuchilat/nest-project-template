@@ -12,12 +12,12 @@ import { Request, Response } from 'express';
 import { RegionService } from './region.service';
 import { LocationService } from '@/app/modules/geo/location/location.service';
 import { ApiTags } from '@nestjs/swagger';
-import {RequestTimeoutInterceptor} from '@/app/interceptors/request-timeout.interceptor';
-import {LoggingInterceptor} from '@/app/interceptors/logging.interceptor';
+import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.interceptor';
+import { RequestLoggingConsoleInterceptor } from '@/app/interceptors/request-logging-console.interceptor';
 
 @ApiTags('Regions')
 @Controller('/regions')
-@UseInterceptors(RequestTimeoutInterceptor, LoggingInterceptor)
+@UseInterceptors(RequestTimeoutInterceptor, RequestLoggingConsoleInterceptor)
 export class RegionController {
   constructor(
     private readonly regionService: RegionService,
