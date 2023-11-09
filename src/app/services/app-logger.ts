@@ -7,21 +7,21 @@ const logger: any = WinstonModule.createLogger({
   transports: [
     // let's log errors into its own file
     new transports.DailyRotateFile({
-      filename: AppConfig.app.log.error.filename,
+      filename: AppConfig.app.log.levels.error.filename,
       level: 'error',
       format: format.combine(format.timestamp(), format.json()),
       datePattern: 'YYYY-MM-DD',
       zippedArchive: false, // don't want to zip our logs
-      maxFiles: AppConfig.app.log.error.maxFiles, // will keep log until they are older than 30 days
+      maxFiles: AppConfig.app.log.levels.error.maxFiles, // will keep log until they are older than 30 days
 
     }),
     // logging all level
     new transports.DailyRotateFile({
-      filename: AppConfig.app.log.all.filename,
+      filename: AppConfig.app.log.levels.all.filename,
       format: format.combine(format.timestamp(), format.json()),
       datePattern: 'YYYY-MM-DD',
       zippedArchive: false, // don't want to zip our logs
-      maxFiles: AppConfig.app.log.all.maxFiles, // will keep log until they are older than 30 days
+      maxFiles: AppConfig.app.log.levels.all.maxFiles, // will keep log until they are older than 30 days
     }),
     // we also want to see logs in our console
     new transports.Console({

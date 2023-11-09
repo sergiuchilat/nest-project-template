@@ -23,13 +23,16 @@ class AppConfigSingleton {
       port: null,
       requestTimeout: 0,
       log: {
-        error: {
-          filename: null,
-          maxFiles: null
-        },
-        all: {
-          filename: null,
-          maxFiles: null
+        custom: false,
+        levels: {
+          error: {
+            filename: null,
+            maxFiles: null
+          },
+          all: {
+            filename: null,
+            maxFiles: null
+          }
         }
       }
     },

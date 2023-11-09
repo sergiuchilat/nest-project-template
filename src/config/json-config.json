@@ -3,13 +3,16 @@
     "port": 3000,
     "requestTimeout": 9999,
     "log": {
-      "error": {
-        "filename": "logs/error.log",
-        "maxFiles": "5d"
-      },
-      "all": {
-        "filename": "logs/all.log",
-        "maxFiles": "1d"
+      "custom": true,
+      "levels": {
+        "error": {
+          "filename": "logs/error.log",
+          "maxFiles": "5d"
+        },
+        "all": {
+          "filename": "logs/all.log",
+          "maxFiles": "1d"
+        }
       }
     }
   },

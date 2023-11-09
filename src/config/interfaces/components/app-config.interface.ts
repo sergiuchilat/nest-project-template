@@ -7,7 +7,10 @@ export default interface AppConfigInterface {
     port: string
     requestTimeout: number
     log: {
-        error: LogConfigInterface
-        all: LogConfigInterface
+        custom: boolean,
+        levels: {
+            error: LogConfigInterface
+            all: LogConfigInterface
+        }
     }
 }

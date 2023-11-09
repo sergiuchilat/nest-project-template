@@ -12,13 +12,16 @@ export default class EnvConfigStrategy {
         port: process.env.APP_PORT,
         requestTimeout: Number(process.env.APP_REQUEST_TIMEOUT),
         log: {
-          error: {
-            filename: process.env.APP_LOG_ERROR_FILENAME,
-            maxFiles: process.env.APP_LOG_ERROR_MAX_FILES
-          },
-          all: {
-            filename: process.env.APP_LOG_ALL_FILENAME,
-            maxFiles: process.env.APP_LOG_ALL_MAX_FILES
+          custom: process.env.APP_LOG_CUSTOM === 'true',
+          levels: {
+            error: {
+              filename: process.env.APP_LOG_ERROR_FILENAME,
+              maxFiles: process.env.APP_LOG_ERROR_MAX_FILES
+            },
+            all: {
+              filename: process.env.APP_LOG_ALL_FILENAME,
+              maxFiles: process.env.APP_LOG_ALL_MAX_FILES
+            }
           }
         }
       },

@@ -9,7 +9,7 @@ import appLogger from '@/app/services/app-logger';
 async function bootstrap() {
 
   const app = await NestFactory.create(AppModule, {
-    logger: appLogger
+    logger: AppConfig.app.log.custom ? appLogger : undefined
   });
 
   if (AppConfig.docs.generate) {

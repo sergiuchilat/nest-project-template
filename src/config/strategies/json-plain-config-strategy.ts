@@ -11,13 +11,16 @@ export default class JsonPlainConfigStrategy {
         port: jsonPlainConfig.app.port.toString(),
         requestTimeout: jsonPlainConfig.app.requestTimeout,
         log: {
-          error: {
-            filename: jsonPlainConfig.app.log.error.filename,
-            maxFiles: jsonPlainConfig.app.log.error.maxFiles
-          },
-          all: {
-            filename: jsonPlainConfig.app.log.all.filename,
-            maxFiles: jsonPlainConfig.app.log.all.maxFiles
+          custom: jsonPlainConfig.app.log.custom,
+          levels: {
+            error: {
+              filename: jsonPlainConfig.app.log.levels.error.filename,
+              maxFiles: jsonPlainConfig.app.log.levels.error.maxFiles
+            },
+            all: {
+              filename: jsonPlainConfig.app.log.levels.all.filename,
+              maxFiles: jsonPlainConfig.app.log.levels.all.maxFiles
+            }
           }
         }
       },
