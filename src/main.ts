@@ -22,4 +22,9 @@ async function bootstrap() {
   });
   await app.listen(AppConfig.app.port);
 }
-bootstrap();
+
+(async () => {
+  console.log('App bootstrap started');
+  await bootstrap();
+  console.log('App bootstrap finished');
+})();

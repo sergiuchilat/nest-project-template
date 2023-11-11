@@ -11,7 +11,7 @@ export enum AppConfigStrategies {
 }
 
 class AppConfigSingleton {
-  private static instance: AppConfigSingleton = null;
+  private static instance = null;
 
   private readonly configStrategies = {
     'env': new EnvConfigStrategy(),

@@ -49,4 +49,8 @@ const bootstrap = async () => {
   await app.close();
 };
 
-bootstrap();
+(async () => {
+  console.log('App bootstrap started');
+  await bootstrap();
+  console.log('App bootstrap finished');
+})();
