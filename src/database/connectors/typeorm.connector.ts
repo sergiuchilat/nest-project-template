@@ -5,7 +5,7 @@ import typeorm from '@/database/config/typeorm.config';
 export default [
   TypeOrmModule.forRootAsync({
     inject: [ConfigService],
-    useFactory: (configService: ConfigService) => configService.get('typeorm'),
+    useFactory: (configService: ConfigService) => configService.get('typeorm')
   }),
   ConfigModule.forRoot({
     isGlobal: true,

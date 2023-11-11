@@ -1,5 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import AppConfig from '@/config/app-config';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
 const config = {
   type: AppConfig.db.driver,
@@ -21,3 +22,5 @@ const config = {
 };
 
 export default registerAs('typeorm', () => config);
+
+export const connectionSource = new DataSource(config as DataSourceOptions);
