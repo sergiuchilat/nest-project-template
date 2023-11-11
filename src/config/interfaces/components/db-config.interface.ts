@@ -13,4 +13,5 @@ export default interface DbConfigInterface{
     user: string
     password: string
     name: string
+    url: string
 }

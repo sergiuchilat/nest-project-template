@@ -1,5 +1,6 @@
 import AppConfigInterface from '../interfaces/app-config.interface';
 import { DbDriver } from '../interfaces/components/db-config.interface';
+import { generateDatabaseUrl } from '@/config/services/db.service';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -31,7 +32,8 @@ export default class EnvConfigStrategy {
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         name: process.env.DB_NAME,
-        driver: DbDriver[process.env.DB_DRIVER]
+        driver: DbDriver[process.env.DB_DRIVER],
+        url: null
       },
       jwt: {
         secret: process.env.JWT_SECRET_KEY,
@@ -51,6 +53,8 @@ export default class EnvConfigStrategy {
         admin_password: process.env.APP_INSTALL_ADMIN_PASSWORD
       }
     };
+
+    this.config.db.url = generateDatabaseUrl(this.config.db);
   }
 
   public getConfig() {

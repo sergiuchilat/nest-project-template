@@ -25,6 +25,10 @@ async function bootstrap() {
 
 (async () => {
   console.log('App bootstrap started');
-  await bootstrap();
+  try {
+    await bootstrap();
+  }catch (e) {
+    console.log(e);
+  }
   console.log('App bootstrap finished');
 })();

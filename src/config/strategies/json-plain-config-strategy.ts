@@ -1,7 +1,7 @@
-
 import AppConfigInterface from '../interfaces/app-config.interface';
 import { DbDriver } from '../interfaces/components/db-config.interface';
 import jsonPlainConfig from '@/config/json-config.json';
+import {generateDatabaseUrl} from '@/config/services/db.service';
 export default class JsonPlainConfigStrategy {
   private readonly config: AppConfigInterface = null;
 
@@ -30,7 +30,8 @@ export default class JsonPlainConfigStrategy {
         user: jsonPlainConfig.db.user,
         password: jsonPlainConfig.db.password,
         name: jsonPlainConfig.db.name,
-        driver: DbDriver[jsonPlainConfig.db.driver]
+        driver: DbDriver[jsonPlainConfig.db.driver],
+        url: null
       },
       jwt: {
         secret: jsonPlainConfig.jwt.secret_key,
@@ -50,6 +51,7 @@ export default class JsonPlainConfigStrategy {
         admin_password: jsonPlainConfig.appInstall.admin_password
       }
     };
+    this.config.db.url = generateDatabaseUrl(this.config.db);
   }
 
   public getConfig() {

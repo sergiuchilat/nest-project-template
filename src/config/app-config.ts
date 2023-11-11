@@ -42,7 +42,8 @@ class AppConfigSingleton {
       user: null,
       password: null,
       name: null,
-      driver: null
+      driver: null,
+      url: null
     },
     jwt: {
       secret: null,
