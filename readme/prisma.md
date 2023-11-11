@@ -1,5 +1,12 @@
 # Prisma
 
+### Prisma initialisation
+
+```bash
+# Generate prisma client
+$ prisma init
+```
+
 ### Generate client
 
 ```bash
