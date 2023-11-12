@@ -1,6 +1,6 @@
 import {
-  ConflictException,
-  Injectable,
+  ConflictException, Inject,
+  Injectable, Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -25,6 +25,8 @@ import { filesConfig } from '@/app/modules/geo/country/interceptors/country-flag
 import { FileUploaderService } from '@/app/modules/file/modules/file-uploader/file-uploader.service';
 import AppConfig from '@/config/app-config';
 import {EventEmitter2, OnEvent} from '@nestjs/event-emitter';
+import { Cache } from 'cache-manager';
+import {CACHE_MANAGER} from '@nestjs/cache-manager';
 
 
 @Injectable()
@@ -34,7 +36,8 @@ export class CountryService {
     private readonly countryRepository: Repository<Country>,
     @InjectRepository(Region)
     private readonly regionRepository: Repository<Region>,
-    private readonly eventEmitter: EventEmitter2
+    private readonly eventEmitter: EventEmitter2,
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async getAllForDropdown(): Promise<CountryItemDropdownDto[]> {
@@ -54,13 +57,27 @@ export class CountryService {
     sort_by: CountrySort,
     filters: any,
   ): Promise<Pagination<Country>> {
+    const cacheKey = `countries-paginated-${JSON.stringify(options)}-${sort_order}-${sort_by}-${JSON.stringify(filters)}`;
+    const cachedData: any = await this.cacheManager.get(cacheKey);
+    console.log('HERE');
+    if(cachedData){
+      console.log('cached data');
+      return cachedData;
+    }
     const filtersBuilder = new CountryFiltersBuilder(filters);
     try {
       const queryBuilder = this.countryRepository
         .createQueryBuilder('countries')
         .where(filtersBuilder.get())
-        .orderBy(sort_by, sort_order);
-      return paginate<Country>(queryBuilder, options);
+        .orderBy(sort_by, sort_order)
+        .skip(Number(options.page) * Number(options.limit))
+        .take(Number(options.limit))
+      ;
+      Logger.log(queryBuilder.getSql());
+      const response = await paginate<Country>(queryBuilder, options);
+      await this.cacheManager.set(cacheKey, response, 10 * 1000);
+      console.log('from database');
+      return response;
     } catch (e) {
       throw new NotFoundException();
     }

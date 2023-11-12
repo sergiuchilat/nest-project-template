@@ -10,9 +10,11 @@ import { Location } from '@/app/modules/geo/location/location.entity';
 import { RolesGuard } from '@/app/middleware/guards/roles.guard';
 import { APP_GUARD } from '@nestjs/core';
 import {CountrySeedService} from '@/app/modules/geo/country/country.seed.service';
+import {CacheModule} from '@nestjs/cache-manager';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Country, Region, Location])],
+  imports: [TypeOrmModule.forFeature([Country, Region, Location]), CacheModule.register()],
   exports: [TypeOrmModule, CountryService, CountrySeedService],
   controllers: [CountryController],
   providers: [
@@ -23,7 +25,7 @@ import {CountrySeedService} from '@/app/modules/geo/country/country.seed.service
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
-    CountrySeedService
+    CountrySeedService,
   ],
 })
 export class CountryModule {}

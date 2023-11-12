@@ -38,6 +38,7 @@ import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.in
 import {RequestLoggingConsoleInterceptor} from '@/app/interceptors/request-logging-console.interceptor';
 import {FileInterceptor} from '@nestjs/platform-express';
 import { multerOptionsCountryFlag } from '@/app/modules/geo/country/interceptors/country-flag.storage.interceptor.config';
+import PaginatorConfigInterface from '@/database/interfaces/paginator-config.interface';
 
 @ApiTags('Countries')
 @Controller('/countries')
@@ -107,12 +108,13 @@ export class CountryController {
     @Req() request: Request,
     @Res() response: Response,
   ) {
+    const paginatorConfig: PaginatorConfigInterface = {
+      page,
+      limit
+    };
     response.status(HttpStatus.OK).json(
       await this.countryService.getAllPaginated(
-        {
-          page,
-          limit,
-        },
+        paginatorConfig,
         sort_order,
         sort_by,
         request.query.filter,
@@ -177,12 +179,13 @@ export class CountryController {
     @Req() request: Request,
     @Res() response: Response,
   ) {
+    const paginatorConfig: PaginatorConfigInterface = {
+      page,
+      limit
+    };
     response.status(HttpStatus.OK).json(
       await this.countryService.getAllWithDeleted(
-        {
-          page,
-          limit,
-        },
+        paginatorConfig,
         sort_order,
         sort_by,
         request.query.filter,
