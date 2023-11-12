@@ -161,7 +161,7 @@ export class CountryService {
 
   @OnEvent('country.deleted', { async: true })
   async handleCountryDeletedEvent(country: CountryItemDto) {
-    await this.removeFlag(country);
+    await this.removeFlag(country.id);
   }
 
   async getOneByIdWithRegions(
@@ -205,7 +205,8 @@ export class CountryService {
     };
   }
 
-  async removeFlag(country: CountryItemDto){
+  async removeFlag(id: number){
+    const country = await this.getOneById(id);
     const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
     await FileUploaderService.deleteFile(flagFileName);
     return {

@@ -2,7 +2,6 @@ import { multerOptions } from '@/app/modules/file/modules/file-uploader/intercep
 // Multer configuration
 
 export const filesConfig = {
-  folderTmp: 'tmp',
   folder: 'countries/flags',
   filetypes: ['image/png'],
   maxSize: 1024 * 1024 * 5,

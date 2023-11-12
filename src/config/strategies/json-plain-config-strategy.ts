@@ -39,6 +39,8 @@ export default class JsonPlainConfigStrategy {
       },
       files:{
         uploadDirectory: jsonPlainConfig.files.uploadDirectory,
+        uploadTempDirectory: jsonPlainConfig.files.uploadTempDirectory,
+        uploadTempLifetime: Number(jsonPlainConfig.files.uploadTempLifetime),
         maxFileSize: Number(jsonPlainConfig.files.maxFileSize)
       },
       docs: {

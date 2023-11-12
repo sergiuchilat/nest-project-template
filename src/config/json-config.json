@@ -30,6 +30,8 @@
   },
   "files": {
     "uploadDirectory": "uploads",
+    "uploadTempDirectory": "uploads/tmp",
+    "uploadTempLifetime": 60,
     "maxFileSize": 10000000
   },
   "docs": {

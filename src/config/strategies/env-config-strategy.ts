@@ -41,6 +41,8 @@ export default class EnvConfigStrategy {
       },
       files: {
         uploadDirectory: process.env.FILES_UPLOAD_DIR,
+        uploadTempDirectory: process.env.FILES_UPLOAD_TEMP_DIR,
+        uploadTempLifetime: Number(process.env.FILES_UPLOAD_TEMP_LIFETIME),
         maxFileSize: Number(process.env.FILES_MAX_SIZE)
       },
       docs: {

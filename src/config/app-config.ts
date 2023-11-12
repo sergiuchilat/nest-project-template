@@ -51,6 +51,8 @@ class AppConfigSingleton {
     },
     files: {
       uploadDirectory: null,
+      uploadTempDirectory: null,
+      uploadTempLifetime: null,
       maxFileSize: null,
     },
     docs:{

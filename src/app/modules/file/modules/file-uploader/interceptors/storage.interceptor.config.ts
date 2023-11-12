@@ -27,7 +27,7 @@ export const multerOptions = (config: any) => {
     storage: diskStorage({
     // Destination storage path details
       destination: (req: any, file: any, cb: any) => {
-        const uploadPath = `${AppConfig.files.uploadDirectory}/${config.folderTmp || config.folder}`;
+        const uploadPath = `${AppConfig.files.uploadTempDirectory}`;
         // Create folder if doesn't exist
         if (!existsSync(uploadPath)) {
           mkdirSync(uploadPath);
