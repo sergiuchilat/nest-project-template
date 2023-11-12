@@ -4,19 +4,20 @@ import typeormConnector from '@/database/connectors/typeorm.connector';
 import EventEmitterConfig from '@/app/services/events-gateway/event-emitter.config';
 import middlewares from './middleware';
 import {SeedService} from '@/database/seeds/seed.service';
-import { CachedModule } from './modules/cached/cached.module';
-import { FileUploaderModule } from './modules/file/modules/file-uploader/file-uploader.module';
+import {ScheduleModule} from '@nestjs/schedule';
+import {CronService} from '@/app/modules/cron/cron.service';
+
 
 @Module({
   imports: [
     ...typeormConnector,
     ...AppModules,
     EventEmitterConfig,
-    CachedModule,
-    FileUploaderModule
+    ScheduleModule.forRoot()
   ],
   providers: [
-    SeedService
+    SeedService,
+    CronService
   ],
 })
 export class AppModule implements NestModule {

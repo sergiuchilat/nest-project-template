@@ -9,4 +9,4 @@ export const filesConfig = {
 };
 
 // Multer upload options
-export const multerOptionsCountryFlag = multerOptions(filesConfig);
+export const multerOptionsCountryFlag= multerOptions(filesConfig);

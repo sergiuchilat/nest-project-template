@@ -21,9 +21,10 @@ import { CountryItemDropdownDto } from './dto/country.item.dropdown.dto';
 import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import CountryFiltersBuilder from './builders/country.filters.builder';
-import * as fs from 'fs';
 import { filesConfig } from '@/app/modules/geo/country/interceptors/country-flag.storage.interceptor.config';
+import { FileUploaderService } from '@/app/modules/file/modules/file-uploader/file-uploader.service';
 import AppConfig from '@/config/app-config';
+
 
 @Injectable()
 export class CountryService {
@@ -188,12 +189,7 @@ export class CountryService {
       throw new NotFoundException();
     }
     const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
-    fs.rename(file.path, `${flagFileName}`, (error) => {
-      if(error){
-        throw new NotFoundException();
-      }
-    });
-
+    await FileUploaderService.moveUploadedFile(file.path, flagFileName);
     return {
       entity: 'country',
       id: id,
@@ -207,11 +203,7 @@ export class CountryService {
       throw new NotFoundException();
     }
     const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
-    fs.unlink(flagFileName, (err) => {
-      if (err) {
-        throw new NotFoundException();
-      }
-    });
+    await FileUploaderService.deleteFile(flagFileName);
     return {
       entity: 'country',
       id: id,
