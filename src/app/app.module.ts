@@ -6,6 +6,7 @@ import middlewares from './middleware';
 import {SeedService} from '@/database/seeds/seed.service';
 import {ScheduleModule} from '@nestjs/schedule';
 import {CronService} from '@/app/modules/cron/cron.service';
+import {EventEmitterModule} from '@nestjs/event-emitter';
 
 
 @Module({
@@ -13,7 +14,8 @@ import {CronService} from '@/app/modules/cron/cron.service';
     ...typeormConnector,
     ...AppModules,
     EventEmitterConfig,
-    ScheduleModule.forRoot()
+    ScheduleModule.forRoot(),
+    EventEmitterModule.forRoot()
   ],
   providers: [
     SeedService,

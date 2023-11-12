@@ -24,6 +24,7 @@ import CountryFiltersBuilder from './builders/country.filters.builder';
 import { filesConfig } from '@/app/modules/geo/country/interceptors/country-flag.storage.interceptor.config';
 import { FileUploaderService } from '@/app/modules/file/modules/file-uploader/file-uploader.service';
 import AppConfig from '@/config/app-config';
+import {EventEmitter2, OnEvent} from '@nestjs/event-emitter';
 
 
 @Injectable()
@@ -33,6 +34,7 @@ export class CountryService {
     private readonly countryRepository: Repository<Country>,
     @InjectRepository(Region)
     private readonly regionRepository: Repository<Region>,
+    private readonly eventEmitter: EventEmitter2
   ) {}
 
   async getAllForDropdown(): Promise<CountryItemDropdownDto[]> {
@@ -152,8 +154,14 @@ export class CountryService {
       deletedBy: null,
       deletedAt: null,
     });
-    await this.removeFlag(id);
+    this.eventEmitter.emit('country.deleted', country);
+
     return await this.countryRepository.delete(id);
+  }
+
+  @OnEvent('country.deleted', { async: true })
+  async handleCountryDeletedEvent(country: CountryItemDto) {
+    await this.removeFlag(country);
   }
 
   async getOneByIdWithRegions(
@@ -197,16 +205,12 @@ export class CountryService {
     };
   }
 
-  async removeFlag(id: number){
-    const country = await this.getOneById(id);
-    if (!country) {
-      throw new NotFoundException();
-    }
+  async removeFlag(country: CountryItemDto){
     const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
     await FileUploaderService.deleteFile(flagFileName);
     return {
       entity: 'country',
-      id: id,
+      id: country.id,
       file: flagFileName
     };
   }
