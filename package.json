@@ -57,6 +57,7 @@
     "dotenv": "^16.0.3",
     "is-valid-hostname": "^1.0.2",
     "moment": "^2.29.4",
+    "move-file": "^3.1.0",
     "mysql2": "^2.3.3",
     "nest-csv-parser": "^2.0.4",
     "nest-winston": "^1.9.4",
@@ -71,6 +72,7 @@
     "socket.io": "^4.7.2",
     "typeorm": "^0.3.17",
     "typeorm-extension": "^3.1.1",
+    "uuid": "^9.0.1",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1",
     "yargs": "^17.7.2"
@@ -81,6 +83,7 @@
     "@nestjs/testing": "^10.2.5",
     "@types/faker": "^6.6.9",
     "@types/jest": "28.1.8",
+    "@types/multer": "^1.4.10",
     "@types/node": "^16.0.0",
     "@types/passport-jwt": "^3.0.6",
     "@types/passport-local": "^1.0.34",

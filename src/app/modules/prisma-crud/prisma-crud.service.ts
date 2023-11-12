@@ -17,8 +17,8 @@ export class PrismaCrudService {
     return await this.prismaCrudRepository.getCountries();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} prisma`;
+  async findOne(id: number) {
+    return await this.prismaCrudRepository.getCountryById(id);
   }
 
   update(id: number, updatePrismaDto: UpdatePrismaCrudDto) {

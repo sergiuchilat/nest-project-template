@@ -37,6 +37,10 @@ export default class JsonPlainConfigStrategy {
         secret: jsonPlainConfig.jwt.secret_key,
         expiresIn: jsonPlainConfig.jwt.token_expires_in
       },
+      files:{
+        uploadDirectory: jsonPlainConfig.files.uploadDirectory,
+        maxFileSize: Number(jsonPlainConfig.files.maxFileSize)
+      },
       docs: {
         generate: jsonPlainConfig.docs.generate,
         path: jsonPlainConfig.docs.path,

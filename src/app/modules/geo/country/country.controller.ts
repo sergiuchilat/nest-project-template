@@ -11,10 +11,10 @@ import {
   Post,
   Query,
   Req,
-  Res,
+  Res, UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+import {Express, Request, Response} from 'express';
 import { CountryService } from './country.service';
 import { RegionService } from '@/app/modules/geo/region/region.service';
 import { LocationService } from '@/app/modules/geo/location/location.service';
@@ -36,6 +36,8 @@ import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import { RequestTimeoutInterceptor } from '@/app/interceptors/request-timeout.interceptor';
 import {RequestLoggingConsoleInterceptor} from '@/app/interceptors/request-logging-console.interceptor';
+import {FileInterceptor} from '@nestjs/platform-express';
+import { multerOptionsCountryFlag } from '@/app/modules/geo/country/interceptors/country-flag.storage.interceptor.config';
 
 @ApiTags('Countries')
 @Controller('/countries')
@@ -282,7 +284,7 @@ export class CountryController {
   }
 
   @Delete(':id/destroy')
-  @RolesGuard(UserRole.ADMIN)
+  //  @RolesGuard(UserRole.ADMIN)
   @ApiOperation({ summary: 'Delete(complete) a country by Id' })
   @ApiParam({ name: 'id', description: 'Country id', type: 'number' })
   @ApiOkResponse({
@@ -349,5 +351,16 @@ export class CountryController {
     response
       .status(HttpStatus.OK)
       .send(await this.locationService.getForCountry(id));
+  }
+
+  @Post(':id/upload-flag')
+  @UseInterceptors(FileInterceptor('flag', multerOptionsCountryFlag))
+  async uploadFlag(@UploadedFile() file: Express.Multer.File, @Param('id', ParseIntPipe) id: number){
+    return await this.countryService.uploadFlag(id, file);
+  }
+
+  @Delete(':id/remove-flag')
+  async removeFlag(@Param('id', ParseIntPipe) id: number){
+    return await this.countryService.removeFlag(id);
   }
 }

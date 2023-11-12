@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-crud-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -13,4 +13,13 @@ datasource db {
 model countries {
   id    Int     @id @default(autoincrement())
   name  String?
+  code  String?
+  regions regions[]
+}
+
+model regions {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  countryId Int?
+  countries countries? @relation(fields: [countryId], references: [id])
 }

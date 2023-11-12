@@ -21,6 +21,9 @@ import { CountryItemDropdownDto } from './dto/country.item.dropdown.dto';
 import { SortOrder } from '@/database/validators/typeorm.sort.validator';
 import { CountrySort } from './validators/country.sort.validator';
 import CountryFiltersBuilder from './builders/country.filters.builder';
+import * as fs from 'fs';
+import { filesConfig } from '@/app/modules/geo/country/interceptors/country-flag.storage.interceptor.config';
+import AppConfig from '@/config/app-config';
 
 @Injectable()
 export class CountryService {
@@ -148,6 +151,7 @@ export class CountryService {
       deletedBy: null,
       deletedAt: null,
     });
+    await this.removeFlag(id);
     return await this.countryRepository.delete(id);
   }
 
@@ -176,5 +180,42 @@ export class CountryService {
 
   async truncate(){
     await this.countryRepository.query('TRUNCATE TABLE countries RESTART IDENTITY CASCADE');
+  }
+
+  async uploadFlag(id: number, file: any){
+    const country = await this.getOneById(id);
+    if (!country) {
+      throw new NotFoundException();
+    }
+    const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
+    fs.rename(file.path, `${flagFileName}`, (error) => {
+      if(error){
+        throw new NotFoundException();
+      }
+    });
+
+    return {
+      entity: 'country',
+      id: id,
+      file: flagFileName
+    };
+  }
+
+  async removeFlag(id: number){
+    const country = await this.getOneById(id);
+    if (!country) {
+      throw new NotFoundException();
+    }
+    const flagFileName = `${AppConfig.files.uploadDirectory}/${filesConfig.folder}/${country.code}.png`;
+    fs.unlink(flagFileName, (err) => {
+      if (err) {
+        throw new NotFoundException();
+      }
+    });
+    return {
+      entity: 'country',
+      id: id,
+      file: flagFileName
+    };
   }
 }

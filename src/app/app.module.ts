@@ -5,13 +5,15 @@ import EventEmitterConfig from '@/app/services/events-gateway/event-emitter.conf
 import middlewares from './middleware';
 import {SeedService} from '@/database/seeds/seed.service';
 import { CachedModule } from './modules/cached/cached.module';
+import { FileUploaderModule } from './modules/file/modules/file-uploader/file-uploader.module';
 
 @Module({
   imports: [
     ...typeormConnector,
     ...AppModules,
     EventEmitterConfig,
-    CachedModule
+    CachedModule,
+    FileUploaderModule
   ],
   providers: [
     SeedService

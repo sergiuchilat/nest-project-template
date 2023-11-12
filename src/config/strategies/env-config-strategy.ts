@@ -39,6 +39,10 @@ export default class EnvConfigStrategy {
         secret: process.env.JWT_SECRET_KEY,
         expiresIn: process.env.JWT_TOKEN_EXPIRES_IN
       },
+      files: {
+        uploadDirectory: process.env.FILES_UPLOAD_DIR,
+        maxFileSize: Number(process.env.FILES_MAX_SIZE)
+      },
       docs: {
         generate: process.env.DOCS_GENERATE === 'true',
         path: process.env.DOCS_PATH,

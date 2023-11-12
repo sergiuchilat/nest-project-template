@@ -28,6 +28,10 @@
     "token_expires_in": "1h",
     "secret_key": "secret"
   },
+  "files": {
+    "uploadDirectory": "uploads",
+    "maxFileSize": 10000000
+  },
   "docs": {
     "generate": true,
     "path": "docs",

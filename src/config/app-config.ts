@@ -49,6 +49,10 @@ class AppConfigSingleton {
       secret: null,
       expiresIn: null
     },
+    files: {
+      uploadDirectory: null,
+      maxFileSize: null,
+    },
     docs:{
       generate: false,
       path: null,
