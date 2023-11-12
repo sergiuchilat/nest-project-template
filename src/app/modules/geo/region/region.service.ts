@@ -11,7 +11,14 @@ export class RegionService {
   ) {}
 
   async getAll(): Promise<Region[]> {
-    return await this.regionRepository.find();
+    // return await this.regionRepository.find({
+    //   relations: ['country'],
+    // });
+    return await this.regionRepository
+      .createQueryBuilder('region')
+      .leftJoinAndSelect('region.country', 'country')
+      .select(['region.id', 'region.name', 'country.id', 'country.name'])
+      .getMany();
   }
 
   async getOneById(id: number): Promise<Region> | undefined {
