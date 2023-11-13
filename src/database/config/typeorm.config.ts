@@ -13,6 +13,9 @@ const config = {
   migrations: ['dist/**/database/migrations/*.js'],
   autoLoadEntities: true,
   synchronize: false,
+  logging: true,
+  maxQueryExecutionTime: 1000,
+  logger: 'file',
   extra: {
     poolSize: 20,
     connectionTimeoutMillis: 2000,

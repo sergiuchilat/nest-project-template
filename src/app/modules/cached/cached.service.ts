@@ -3,10 +3,10 @@ import { Cache } from 'cache-manager';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import {FibonacciResultDto} from '@/app/modules/cached/dto/fibonacci.result.dto';
 
+
+
 @Injectable()
 export class CachedService {
-
-  private readonly fibonacciCacheTTL: number = 15 * 1000;
 
   constructor(
       @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
@@ -44,7 +44,19 @@ export class CachedService {
       series: this.generateFibonacciSeries(n),
       cached: false
     };
-    await this.cacheManager.set(`fibonacci-${n}`, response, this.fibonacciCacheTTL);
+    await this.cacheManager.set(`fibonacci-${n}`, response, {
+      ttl: 5
+    } as any);
+
+    return response;
+  }
+
+  async getFibonacciRedis(n: number): Promise<FibonacciResultDto>  {
+    const response: FibonacciResultDto = {
+      number: this.fibonacci(n),
+      series: this.generateFibonacciSeries(n),
+      cached: false
+    };
 
     return response;
   }

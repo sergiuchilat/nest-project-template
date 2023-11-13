@@ -12,7 +12,7 @@ Clean all seeded tables then execute all migrations and seeders
 $ npm run app:install:clean
 ```
 
-### Cleans install an create admin user
+### Cleans install and create admin user
 Clean all seeded tables then execute all migrations and seedersthen create admin user with credentials from the app config
 ```bash
 $ npm run app:install:create_admin_user

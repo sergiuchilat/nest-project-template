@@ -3,3 +3,6 @@ dist
 /.env
 /logs/
 /uploads/
+/pgdata/
+/ormlogs.log
+.env.backup

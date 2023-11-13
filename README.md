@@ -60,7 +60,7 @@ $ npm run test:cov
 - [Sockets](readme/socket.md)
 - [Cacke](readme/cache.md)
 - [Logger](readme/logger.md)
-- [Prisma](readme/prisma.md)
+- [Docker](readme/docker.md)
 
 
 ## Stay in touch
