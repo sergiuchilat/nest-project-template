@@ -1,8 +1,8 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import AppModules from './modules';
-import typeormConnector from '@/database/connectors/typeorm.connector';
-import mongooseConnector from '@/database/connectors/mongoose.connector';
-import redisConnector from '@/database/connectors/redis.connector';
+import TypeormConnector from '@/database/connectors/typeorm.connector';
+import MongooseConnector from '@/database/connectors/mongoose.connector';
+import RedisConnector from '@/database/connectors/redis.connector';
 import EventEmitterConfig from '@/app/services/events-gateway/event-emitter.config';
 import middlewares from './middleware';
 import { SeedService } from '@/database/seeds/seed.service';
@@ -12,9 +12,9 @@ import { RabbitModule } from './modules/rabbit/rabbit.module';
 
 @Module({
   imports: [
-    ...typeormConnector,
-    ...mongooseConnector,
-    ...redisConnector,
+    ...TypeormConnector,
+    ...MongooseConnector,
+    ...RedisConnector,
     ...AppModules,
     ScheduleModule.forRoot(),
     EventEmitterConfig,

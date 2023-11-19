@@ -12,14 +12,15 @@ export class PersonService {
   create(createPersonDto: CreatePersonDto) {
     const createdPerson = new this.personModel(createPersonDto);
     return createdPerson.save();
+
   }
 
   findAll() {
     return this.personModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} person`;
+  findOne(id: string) {
+    return this.personModel.findById(id).exec();
   }
 
   update(id: number, updatePersonDto: UpdatePersonDto) {
@@ -27,7 +28,7 @@ export class PersonService {
     return `This action updates a #${id} person`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} person`;
+  async remove(id: string): Promise<any> {
+    return await this.personModel.deleteOne({_id: id}).exec();
   }
 }

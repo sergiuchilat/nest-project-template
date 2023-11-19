@@ -3,8 +3,6 @@ import { Cache } from 'cache-manager';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import {FibonacciResultDto} from '@/app/modules/cached/dto/fibonacci.result.dto';
 
-
-
 @Injectable()
 export class CachedService {
 
