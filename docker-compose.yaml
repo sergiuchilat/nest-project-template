@@ -11,6 +11,27 @@ services:
       - redis:/data
     networks:
       - nest-init
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo-data:/var/lib/mongodb/data
+    ports:
+      - '27017:27017'
+    networks:
+      - nest-init
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/data
+
   postgres:
     image: postgres:latest
     ports:
@@ -21,19 +42,6 @@ services:
       - POSTGRES_PASSWORD=test
       - POSTGRES_USER=test
       - POSTGRES_DB=test
-    networks:
-      - nest-init
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nest-project-template
-    ports:
-      - '3000:3000'
-    depends_on:
-      - postgres
-    volumes:
-      - ./src:/app/src
     networks:
       - nest-init
 
@@ -50,10 +58,29 @@ services:
       - postgres
       - redis
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-project-template
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+      - redis
+      - mongo
+      - rabbitmq
+    volumes:
+      - ./src:/app/src
+    networks:
+      - nest-init
 volumes:
   postgres-data:
   redis:
     driver: local
+  mongo-data:
+  rabbitmq:
 
 networks:
   nest-init:
+    driver: bridge

@@ -1,28 +1,24 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import AppModules from './modules';
 import typeormConnector from '@/database/connectors/typeorm.connector';
+import mongooseConnector from '@/database/connectors/mongoose.connector';
+import redisConnector from '@/database/connectors/redis.connector';
 import EventEmitterConfig from '@/app/services/events-gateway/event-emitter.config';
 import middlewares from './middleware';
-import {SeedService} from '@/database/seeds/seed.service';
-import {ScheduleModule} from '@nestjs/schedule';
-import {CronService} from '@/app/modules/cron/cron.service';
-import {EventEmitterModule} from '@nestjs/event-emitter';
-import {CacheModule} from '@nestjs/cache-manager';
-import * as redisStore from 'cache-manager-redis-store';
+import { SeedService } from '@/database/seeds/seed.service';
+import { ScheduleModule } from '@nestjs/schedule';
+import { CronService } from '@/app/modules/cron/cron.service';
+import { RabbitModule } from './modules/rabbit/rabbit.module';
 
 @Module({
   imports: [
     ...typeormConnector,
+    ...mongooseConnector,
+    ...redisConnector,
     ...AppModules,
-    EventEmitterConfig,
     ScheduleModule.forRoot(),
-    EventEmitterModule.forRoot(),
-    CacheModule.register({
-      isGlobal: true,
-      store: redisStore,
-      host: 'redis',
-      port: 6379,
-    })
+    EventEmitterConfig,
+    RabbitModule
   ],
   providers: [
     SeedService,

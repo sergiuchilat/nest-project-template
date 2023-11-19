@@ -24,6 +24,17 @@
     "password": "test",
     "name": "test-typeorm"
   },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "user": "",
+    "password": "",
+    "name": "nest"
+  },
+  "redis": {
+    "host": "cache",
+    "port": 6379
+  },
   "jwt": {
     "token_expires_in": "1h",
     "secret_key": "secret"

@@ -33,6 +33,19 @@ export default class JsonPlainConfigStrategy {
         driver: DbDriver[jsonPlainConfig.db.driver],
         url: null
       },
+      mongo: {
+        driver: 'mongodb',
+        host: jsonPlainConfig.mongo.host,
+        port: jsonPlainConfig.mongo.port.toString(),
+        user: jsonPlainConfig.mongo.user,
+        password: jsonPlainConfig.mongo.password,
+        name: jsonPlainConfig.mongo.name,
+        url: null
+      },
+      redis:{
+        host: jsonPlainConfig.redis.host,
+        port: jsonPlainConfig.redis.port.toString()
+      },
       jwt: {
         secret: jsonPlainConfig.jwt.secret_key,
         expiresIn: jsonPlainConfig.jwt.token_expires_in
@@ -58,6 +71,7 @@ export default class JsonPlainConfigStrategy {
       }
     };
     this.config.db.url = generateDatabaseUrl(this.config.db);
+    this.config.mongo.url = generateDatabaseUrl(this.config.mongo);
   }
 
   public getConfig() {

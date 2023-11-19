@@ -5,6 +5,7 @@ import { RegionModule } from './geo/region/region.module';
 import { UserModule } from './user/user.module';
 import { CachedModule } from '@/app/modules/cached/cached.module';
 import { FileUploaderModule } from '@/app/modules/file/modules/file-uploader/file-uploader.module';
+import { PersonModule } from '@/app/modules/mongo/person/person.module';
 
 export default [
   AuthModule,
@@ -13,5 +14,6 @@ export default [
   RegionModule,
   LocationModule,
   CachedModule,
-  FileUploaderModule
+  FileUploaderModule,
+  PersonModule
 ];

@@ -35,6 +35,19 @@ export default class EnvConfigStrategy {
         driver: DbDriver[process.env.DB_DRIVER],
         url: null
       },
+      mongo: {
+        driver: 'mongodb',
+        host: process.env.MONGO_HOST,
+        port: process.env.MONGO_PORT,
+        user: process.env.MONGO_USER,
+        password: process.env.MONGO_PASSWORD,
+        name: process.env.MONGO_DB_NAME,
+        url: null
+      },
+      redis: {
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT
+      },
       jwt: {
         secret: process.env.JWT_SECRET_KEY,
         expiresIn: process.env.JWT_TOKEN_EXPIRES_IN
@@ -61,6 +74,7 @@ export default class EnvConfigStrategy {
     };
 
     this.config.db.url = generateDatabaseUrl(this.config.db);
+    this.config.mongo.url = generateDatabaseUrl(this.config.mongo);
   }
 
   public getConfig() {

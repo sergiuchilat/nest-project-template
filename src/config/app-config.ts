@@ -45,6 +45,19 @@ class AppConfigSingleton {
       driver: null,
       url: null
     },
+    mongo:{
+      driver: null,
+      host: null,
+      port: null,
+      user: null,
+      password: null,
+      name: null,
+      url: null
+    },
+    redis:{
+      host: null,
+      port: null
+    },
     jwt: {
       secret: null,
       expiresIn: null
